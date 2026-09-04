@@ -275,7 +275,7 @@ nav a:hover{opacity:1}nav a:hover::after{width:100%}
 .prize-list li{background:var(--blue);padding:14px 16px;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,240,231,.9)}
 .prize-list li b{color:var(--gold);font-weight:500}
 
-/* ---------- vitrines 3D (maillots & médailles) ---------- */
+/* ---------- vitrine 3D (médaille) ---------- */
 .reveal3d{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px);margin-top:clamp(40px,5vw,66px)}
 .vitrine{text-align:center}
 .stage{perspective:1100px;height:290px;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
@@ -475,7 +475,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <a href="#parcours">Le parcours</a>
       <a href="#epreuves">Les courses</a>
       <a href="#programme">Le programme</a>
-      <a href="#maillots">Maillots</a>
+      <a href="#medaille">Médaille</a>
       <a href="#infos">Infos</a>
       <a href="#sejour">Séjour</a>
     </div>
@@ -491,7 +491,7 @@ footer a:hover{color:var(--gold);opacity:1}
   <a href="#parcours">Le parcours</a>
   <a href="#epreuves">Les trois départs</a>
   <a href="#programme">Le programme</a>
-  <a href="#maillots">Maillots &amp; médailles</a>
+  <a href="#medaille">Médaille</a>
   <a href="#infos">Infos pratiques</a>
   <a href="#sejour">Venir &amp; séjourner</a>
   <a href="#inscription">S'inscrire</a>
@@ -552,14 +552,13 @@ footer a:hover{color:var(--gold);opacity:1}
         <h2 class="display">Courir dans<br>un monument<br>classé</h2>
       </div>
       <div class="side-note" style="border-color:var(--gold)">
-        <p>Sous la Grande Saline court une galerie médiévale de 165 mètres, voûtée comme une cathédrale, creusée pour puiser une saumure plus salée que la mer Morte. Le sel y a été produit pendant <b>1 200 ans</b>, jusqu'à l'arrêt des poêles en 1962.</p>
+        <p>Sous la Grande Saline court une galerie médiévale de 165 mètres, voûtée comme une cathédrale, creusée pour puiser une saumure plus salée que la mer Morte.</p>
         <p>Le 27 juin 2009, l'UNESCO l'inscrivait au patrimoine mondial de l'humanité, en extension de la Saline royale d'Arc-et-Senans classée en 1982.</p>
         <p>Le samedi 7 novembre, elle s'ouvre aux coureurs. Vous la traverserez deux fois dans la soirée, de nuit, mise en lumière pour l'occasion.</p>
       </div>
     </div>
-    <div class="stats rv" style="margin-top:clamp(34px,4vw,52px);margin-bottom:0">
+    <div class="stats rv" style="margin-top:clamp(34px,4vw,52px);margin-bottom:0;grid-template-columns:repeat(2,1fr)">
       <div class="stat"><b>2009</b><span>Inscription à l'UNESCO</span></div>
-      <div class="stat"><b>1 200 ans</b><span>De production de sel</span></div>
       <div class="stat"><b>165 m</b><span>De galerie voûtée</span></div>
     </div>
     <p class="rv" style="margin:22px 0 0;font-size:.95rem;opacity:.75;max-width:74ch">Le site se visite d'ordinaire à la lampe et au pas, guide en tête, pour une dizaine d'euros. Une seule soirée par an, il se traversera en courant.</p>
@@ -796,30 +795,19 @@ footer a:hover{color:var(--gold);opacity:1}
   </div>
 </section>
 
-<!-- ============ MAILLOTS & MÉDAILLES ============ -->
-<section class="pad dark" id="maillots">
+<!-- ============ MÉDAILLE ============ -->
+<section class="pad dark" id="medaille">
   <div class="wrap">
     <div class="two-col rv">
       <div>
         <p class="eyebrow">Encore sous cloche</p>
-        <h2 class="display">Maillots<br>&amp; médailles</h2>
+        <h2 class="display">La médaille</h2>
       </div>
       <div class="side-note" style="border-color:var(--gold)">
         <p>Surprise pour la première édition.</p>
-        <p>Le choix du maillot finisher se fait à la commande du dossard, sur le lien d'inscription.</p>
       </div>
     </div>
-    <div class="reveal3d">
-      <div class="vitrine rv">
-        <div class="stage"><div class="float"><div class="spin" role="img" aria-label="Maillot de la Corrida — visuel tenu secret"><div class="face f1"><svg viewBox="0 0 100 112" aria-hidden="true"><path d="M32 7 L17 14 L6 30 L19 40 L26 33 L26 104 L74 104 L74 33 L81 40 L94 30 L83 14 L68 7 C64 19 36 19 32 7 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="q">?</span></div><div class="face f2 solo"><span class="q">?</span></div><div class="face f3"><svg viewBox="0 0 100 112" aria-hidden="true"><path d="M32 7 L17 14 L6 30 L19 40 L26 33 L26 104 L74 104 L74 33 L81 40 L94 30 L83 14 L68 7 C64 19 36 19 32 7 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="q">?</span></div><div class="face f4 solo"><span class="q">?</span></div></div></div></div>
-        <span class="tag">Surprise</span>
-        <h4>Le maillot de la Corrida</h4>
-      </div>
-      <div class="vitrine rv">
-        <div class="stage"><div class="float"><div class="spin" role="img" aria-label="Maillots distinctifs — visuel tenu secret"><div class="face f1"><svg viewBox="0 0 100 112" aria-hidden="true"><path d="M32 7 L17 14 L6 30 L19 40 L26 33 L26 104 L74 104 L74 33 L81 40 L94 30 L83 14 L68 7 C64 19 36 19 32 7 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="q">?</span></div><div class="face f2 solo"><span class="q">?</span></div><div class="face f3"><svg viewBox="0 0 100 112" aria-hidden="true"><path d="M32 7 L17 14 L6 30 L19 40 L26 33 L26 104 L74 104 L74 33 L81 40 L94 30 L83 14 L68 7 C64 19 36 19 32 7 Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></svg><span class="q">?</span></div><div class="face f4 solo"><span class="q">?</span></div></div></div></div>
-        <span class="tag">Surprise</span>
-        <h4>Le maillot finisher</h4>
-      </div>
+    <div class="reveal3d" style="grid-template-columns:minmax(0,320px);justify-content:center">
       <div class="vitrine rv">
         <div class="stage"><div class="float"><div class="spin flat" role="img" aria-label="Médaille finisher — visuel tenu secret"><div class="face f1"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M50 12 v8 M50 80 v8 M12 50 h8 M80 50 h8" stroke="currentColor" stroke-width="2.2"/></svg><span class="q">?</span></div><div class="face f3"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="50" cy="50" r="28" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M50 12 v8 M50 80 v8 M12 50 h8 M80 50 h8" stroke="currentColor" stroke-width="2.2"/></svg><span class="q">?</span></div></div></div></div>
         <span class="tag">Surprise</span>
@@ -1113,7 +1101,7 @@ footer a:hover{color:var(--gold);opacity:1}
           <li><a href="#parcours">Le parcours</a></li>
           <li><a href="#epreuves">Les trois départs</a></li>
           <li><a href="#programme">Le programme</a></li>
-          <li><a href="#maillots">Maillots &amp; médailles</a></li>
+          <li><a href="#medaille">Médaille</a></li>
           <li><a href="#infos">Infos pratiques &amp; règlement</a></li>
           <li><a href="#sejour">Venir &amp; séjourner</a></li>
         </ul>
