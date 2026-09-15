@@ -462,6 +462,24 @@ footer a:hover{color:var(--gold);opacity:1}
   .stairs-track{height:auto}
   .stairs-sticky{position:relative;height:auto;padding:80px 0}
 }
+/* ---------- formulaire contact ---------- */
+.contact-grid{align-items:center}
+.cform{display:grid;gap:16px;margin-top:4px}
+.cform .field{margin:0}
+.cform label{display:block;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.cform input,.cform textarea{width:100%;background:rgba(243,240,231,.05);border:1px solid var(--line);color:var(--salt);font-family:'Archivo',system-ui,sans-serif;font-size:.98rem;padding:13px 15px;transition:.2s}
+.cform input::placeholder,.cform textarea::placeholder{color:rgba(243,240,231,.4)}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--gold);background:rgba(243,240,231,.08)}
+.cform textarea{min-height:132px;resize:vertical}
+.cform .hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cform button{justify-self:start;margin-top:2px}
+.cform button[disabled]{opacity:.6;cursor:default;transform:none}
+.cform-status{font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.06em;line-height:1.5;min-height:1.1em;margin:2px 0 0}
+.cform-status.ok{color:var(--gold-lite)}
+.cform-status.err{color:var(--ember-lite)}
+.contact-side .mailalt{margin-top:16px;font-size:.96rem}
+.contact-side .mailalt a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(202,161,17,.4);transition:.2s}
+.contact-side .mailalt a:hover{color:var(--gold-lite);border-color:var(--gold-lite)}
 </style>
 </head>
 <body>
@@ -947,7 +965,7 @@ footer a:hover{color:var(--gold);opacity:1}
         <summary>Comment devenir bénévole&#8239;?</summary>
         <div class="body">
           <p>En écrivant à l'organisation. Les postes vont du signaleur à l'accueil du public, en passant par le ravitaillement, le montage du village et l'éclairage de la montée d'Arçon. Repas et place à la soirée compris.</p>
-          <p><a class="btn ghost" href="mailto:contact@velcap.fr?subject=Corrida%20de%20Salins-les-Bains%20—%20bénévolat">Rejoindre les bénévoles <span class="arw">→</span></a></p>
+          <p><a class="btn ghost" href="mailto:corridasalinslesbains@gmail.com?subject=Corrida%20de%20Salins-les-Bains%20—%20bénévolat">Rejoindre les bénévoles <span class="arw">→</span></a></p>
         </div>
       </details>
     </div>
@@ -1046,12 +1064,12 @@ footer a:hover{color:var(--gold);opacity:1}
       <div>
         <h4>Devenir partenaire</h4>
         <p>Visibilité sur le village, l'arche d'arrivée, le ravitaillement et le film officiel de la soirée. Plusieurs formats, du soutien local au partenaire titre.</p>
-        <a class="btn ghost" href="mailto:contact@velcap.fr?subject=Corrida%20de%20Salins-les-Bains%20—%20partenariat">Demander le dossier <span class="arw">→</span></a>
+        <a class="btn ghost" href="mailto:corridasalinslesbains@gmail.com?subject=Corrida%20de%20Salins-les-Bains%20—%20partenariat">Demander le dossier <span class="arw">→</span></a>
       </div>
       <div>
         <h4>Donner un coup de main</h4>
         <p>Signaleurs, ravitaillement, montage du village, éclairage de la montée d'Arçon, accueil du public. Repas, t-shirt et place à la soirée compris.</p>
-        <a class="btn ghost" href="mailto:contact@velcap.fr?subject=Corrida%20de%20Salins-les-Bains%20—%20bénévolat">Devenir bénévole <span class="arw">→</span></a>
+        <a class="btn ghost" href="mailto:corridasalinslesbains@gmail.com?subject=Corrida%20de%20Salins-les-Bains%20—%20bénévolat">Devenir bénévole <span class="arw">→</span></a>
       </div>
     </div>
   </div>
@@ -1086,6 +1104,39 @@ footer a:hover{color:var(--gold);opacity:1}
   </div>
 </section>
 
+<!-- ============ CONTACT ============ -->
+<section class="pad deep" id="contact">
+  <div class="wrap two-col contact-grid">
+    <div class="contact-side rv">
+      <p class="eyebrow">Une question&#8239;?</p>
+      <h2 class="display">Écrivez-nous</h2>
+      <p class="lead" style="opacity:.85">Course, parcours, retrait des dossards, partenariats&#8239;: laissez-nous un message, on vous répond au plus vite.</p>
+      <p class="mailalt">Ou directement&#8239;: <a href="mailto:corridasalinslesbains@gmail.com">corridasalinslesbains@gmail.com</a></p>
+    </div>
+    <form class="cform rv" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+      <!-- Clé Web3Forms du compte corridasalinslesbains@gmail.com -->
+      <input type="hidden" name="access_key" value="3e2f03f6-e45a-422c-98ad-8f4b14fd4ebb">
+      <input type="hidden" name="subject" value="Nouveau message — site Corrida Nocturne de Salins-les-Bains">
+      <input type="hidden" name="from_name" value="Site Corrida Nocturne de Salins-les-Bains">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="field">
+        <label for="cf-name">Nom</label>
+        <input id="cf-name" type="text" name="name" required autocomplete="name" placeholder="Votre nom">
+      </div>
+      <div class="field">
+        <label for="cf-email">Email</label>
+        <input id="cf-email" type="email" name="email" required autocomplete="email" placeholder="vous@exemple.fr">
+      </div>
+      <div class="field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" required placeholder="Votre message"></textarea>
+      </div>
+      <button class="btn" type="submit">Envoyer <span class="arw">→</span></button>
+      <p class="cform-status" id="cformStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -1110,7 +1161,7 @@ footer a:hover{color:var(--gold);opacity:1}
         <h5>Contact</h5>
         <ul>
           <li>Page Instagram officielle</li>
-          <li>Adresse mail dédiée, communiquée sur la plateforme d'inscription</li>
+          <li><a href="mailto:corridasalinslesbains@gmail.com">corridasalinslesbains@gmail.com</a></li>
           <li><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener">Inscriptions · Njuko ↗</a></li>
           <li><a data-pdf href="#infos">Règlement de l'épreuve (PDF)</a></li>
           <li><a href="#partenaires">Partenariats &amp; bénévoles</a></li>
@@ -1334,6 +1385,41 @@ footer a:hover{color:var(--gold);opacity:1}
     svgP.addEventListener('mouseleave', function(){
       cursor.style.opacity = 0;
       read.textContent = '8,1 km · +286 m';
+    });
+  }
+
+  /* formulaire de contact — envoi via Web3Forms (aucun backend) */
+  var cform = document.getElementById('contactForm');
+  if(cform){
+    var cstatus = document.getElementById('cformStatus');
+    var mailFallback = 'Envoi impossible pour le moment. Écrivez-nous à corridasalinslesbains@gmail.com';
+    cform.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = cform.querySelector('button[type="submit"]');
+      cstatus.className = 'cform-status';
+      cstatus.textContent = 'Envoi en cours…';
+      if(btn) btn.disabled = true;
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(cform)
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if(j && j.success){
+          cstatus.className = 'cform-status ok';
+          cstatus.textContent = 'Merci, votre message est parti. Nous vous répondrons vite.';
+          cform.reset();
+        } else {
+          cstatus.className = 'cform-status err';
+          cstatus.textContent = (j && j.message) ? j.message : mailFallback;
+        }
+      })
+      .catch(function(){
+        cstatus.className = 'cform-status err';
+        cstatus.textContent = mailFallback;
+      })
+      .finally(function(){ if(btn) btn.disabled = false; });
     });
   }
 })();
