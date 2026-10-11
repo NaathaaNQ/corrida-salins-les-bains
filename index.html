@@ -229,6 +229,7 @@ nav a:hover{opacity:1}nav a:hover::after{width:100%}
 .map-legend i{display:inline-block;width:16px;height:3px;margin-right:7px;vertical-align:middle}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(1,42,98,.2);margin:0 0 30px}
 .dark .stats,.deep .stats{border-color:rgba(202,161,17,.3)}
+.stats.stats-2{grid-template-columns:repeat(2,1fr)}
 .stat{padding:18px 16px;border-left:1px solid rgba(202,161,17,.3)}
 .stat:first-child{border-left:0}
 .stat b{display:block;font-family:'Bodoni Moda',serif;font-size:clamp(1.5rem,3.2vw,2.3rem);font-weight:600;line-height:1;color:var(--gold-lite)}
@@ -448,7 +449,7 @@ footer a:hover{color:var(--gold);opacity:1}
   .g-a,.g-b,.g-c,.g-d{grid-column:span 12;aspect-ratio:4/3}
   .prize-list{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr;border-left:0;border-right:0}
+  .stats,.stats.stats-2{grid-template-columns:1fr;border-left:0;border-right:0}
   .stat{border-left:0;border-top:1px solid rgba(202,161,17,.3)}
   .stat:first-child{border-top:0}
   .header-cta{display:none}
@@ -575,7 +576,7 @@ footer a:hover{color:var(--gold);opacity:1}
         <p>Le samedi 7 novembre, elle s'ouvre aux coureurs. Vous la traverserez deux fois dans la soirée, de nuit, mise en lumière pour l'occasion.</p>
       </div>
     </div>
-    <div class="stats rv" style="margin-top:clamp(34px,4vw,52px);margin-bottom:0;grid-template-columns:repeat(2,1fr)">
+    <div class="stats stats-2 rv" style="margin-top:clamp(34px,4vw,52px);margin-bottom:0">
       <div class="stat"><b>2009</b><span>Inscription à l'UNESCO</span></div>
       <div class="stat"><b>165 m</b><span>De galerie voûtée</span></div>
     </div>
@@ -723,7 +724,7 @@ footer a:hover{color:var(--gold);opacity:1}
         <p class="who">U14 · U16</p>
       </div>
       <div class="race headline rv">
-        <p class="time">19h45 · 8,6 km · dès 16 €</p>
+        <p class="time">19h45 · 8,6 km · dès 18 €</p>
         <h3 class="display">Corrida Nocturne</h3>
         <p>Trois boucles, 220 m D+, deux traversées de la Grande Saline — monument UNESCO — et deux montées d'Arçon. Frontale obligatoire.</p>
         <p class="who">U18 et plus · 16 ans et plus</p>
@@ -758,7 +759,7 @@ footer a:hover{color:var(--gold);opacity:1}
         <div class="body">
           <p>L'épreuve reine. Présentation des favoris sur la ligne, départ allée Marcou à 19h45, arrivée place de la Mairie. Trois boucles de centre-ville, avec deux traversées des sous-sols de la Grande Saline, deux montées dans les escaliers d'Arçon et un ravitaillement repassé à chaque tour.</p>
           <p>La jauge est fixée à 500 participants adultes pour cette première édition&#8239;: les inscriptions ferment dès que la limite est atteinte, et au plus tard une semaine avant l'épreuve.</p>
-          <div class="spec"><div><span class="k">Départ</span><span class="v">19h45 · allée Marcou</span></div><div><span class="k">Distance</span><span class="v">8,6 km</span></div><div><span class="k">Dénivelé</span><span class="v">220 m D+</span></div><div><span class="k">Parcours</span><span class="v">3 boucles</span></div><div><span class="k">Catégories</span><span class="v">U18 et plus · 16 ans et +</span></div><div><span class="k">Jauge</span><span class="v">500 dossards</span></div><div><span class="k">Tarif</span><span class="v">16 € · 18 € · 20 €</span></div><div><span class="k">Frontale</span><span class="v">Obligatoire</span></div></div>
+          <div class="spec"><div><span class="k">Départ</span><span class="v">19h45 · allée Marcou</span></div><div><span class="k">Distance</span><span class="v">8,6 km</span></div><div><span class="k">Dénivelé</span><span class="v">220 m D+</span></div><div><span class="k">Parcours</span><span class="v">3 boucles</span></div><div><span class="k">Catégories</span><span class="v">U18 et plus · 16 ans et +</span></div><div><span class="k">Jauge</span><span class="v">500 dossards</span></div><div><span class="k">Tarif</span><span class="v">18 € · 20 €</span></div><div><span class="k">Frontale</span><span class="v">Obligatoire</span></div></div>
         </div>
       </details>
     </div>
@@ -864,7 +865,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="rv"><span class="k">Où</span><h4>Départ allée Marcou</h4><p>Arrivée place de la Mairie, à Salins-les-Bains (39110). Accès par la N83&#8239;: Besançon 45 min, Dole 50 min, Lons-le-Saunier 40 min.</p></div>
       <div class="rv"><span class="k">Quand</span><h4>Samedi 7 novembre 2026</h4><p>Jungle Run à 18h15, Mini-Corrida à 18h45, Corrida Nocturne à 19h45. Remise des récompenses à 21h30.</p></div>
       <div class="rv"><span class="k">Dossards</span><h4>Trois retraits possibles</h4><p>Deux demi-journées au Decathlon de Besançon la semaine précédant la course, une permanence à Salins-les-Bains le vendredi soir, et le jour J sur le village. Pièce d'identité et justificatif obligatoires.</p></div>
-      <div class="rv"><span class="k">Inscriptions</span><h4><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:inherit">En ligne, sur Njuko ↗</a></h4><p>Corrida&#8239;: 16 € jusqu'au 1<sup>er</sup> octobre, 18 € jusqu'au 20 octobre, puis 20 € jusqu'à la clôture, une semaine avant l'épreuve. Mini-Corrida 7 €, Jungle Run 4 €.</p></div>
+      <div class="rv"><span class="k">Inscriptions</span><h4><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:inherit">En ligne, sur Njuko ↗</a></h4><p>Corrida&#8239;: 18 € jusqu'au 20 octobre, puis 20 € jusqu'à la clôture, une semaine avant l'épreuve. Mini-Corrida 7 €, Jungle Run 4 €.</p></div>
       <div class="rv"><span class="k">Justificatif</span><h4>Licence, PPS ou certificat</h4><p>Au choix&#8239;: une licence, un Parcours Prévention Santé (PPS) ou un certificat médical.</p></div>
       <div class="rv"><span class="k">Matériel</span><h4 class="todo">Lampe frontale obligatoire</h4><p>Elle est exigée pour tous les participants, sur les trois épreuves. Sans frontale, pas de départ. Une tenue claire ou réfléchissante est en plus recommandée.</p></div>
       <div class="rv"><span class="k">Chrono</span><h4>Puce électronique</h4><p>Chronométrage Taktik Sport pour la Corrida et la Mini-Corrida. Classement scratch et par catégories FFA du U14 au U23, seuls les premiers de chaque catégorie étant récompensés. Résultats affichés à l'arrivée et publiés en ligne.</p></div>
@@ -907,7 +908,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <details>
         <summary>Combien coûte l'inscription&#8239;? <span class="tag">Article 6</span></summary>
         <div class="body">
-          <p>Les inscriptions se font exclusivement en ligne, via <a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:var(--gold)">la page Njuko de l'épreuve</a>. Pour la Corrida Nocturne&#8239;: 16 € jusqu'au 1<sup>er</sup> octobre 2026, 18 € jusqu'au 20 octobre, puis 20 € jusqu'à la clôture, fixée une semaine avant l'épreuve. La Mini-Corrida est à 7 €, le Jungle Run à 4 €.</p>
+          <p>Les inscriptions se font exclusivement en ligne, via <a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:var(--gold)">la page Njuko de l'épreuve</a>. Pour la Corrida Nocturne&#8239;: 18 € jusqu'au 20 octobre 2026, puis 20 € jusqu'à la clôture, fixée une semaine avant l'épreuve. La Mini-Corrida est à 7 €, le Jungle Run à 4 €.</p>
           <p>La jauge est de 500 participants adultes&#8239;: mieux vaut ne pas attendre le dernier tarif.</p>
         </div>
       </details>
@@ -1089,10 +1090,9 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="cd-unit"><b id="cd2S">—</b><span>Sec</span></div>
     </div>
     <p class="cd-note" style="text-align:center;color:rgba(243,240,231,.65)" id="cd2Note">Avant l'ouverture des inscriptions&#8239;· jeudi 3 septembre 2026 à 19h00</p>
-    <p class="price-anchor">Une visite guidée de la Grande Saline coûte à elle seule <b>une dizaine d'euros</b>, de jour, au pas, guide en tête. Le dossard de la Corrida démarre à <b>16 €</b> et vous y fait passer deux fois, de nuit, mise en lumière, avec 8,6 km de ville fermée autour.</p>
+    <p class="price-anchor">Une visite guidée de la Grande Saline coûte à elle seule <b>une dizaine d'euros</b>, de jour, au pas, guide en tête. Le dossard de la Corrida démarre à <b>18 €</b> et vous y fait passer deux fois, de nuit, mise en lumière, avec 8,6 km de ville fermée autour.</p>
     <p class="lead" style="font-size:1rem">500 dossards adultes seulement&#8239;: la jauge est imposée par le passage souterrain. Clôture une semaine avant l'épreuve, ou avant si la limite est atteinte.</p>
-    <div class="stats" style="max-width:620px;margin:0 auto 34px">
-      <div class="stat"><b>16 €</b><span>Jusqu'au 1<sup>er</sup> octobre</span></div>
+    <div class="stats stats-2" style="max-width:620px;margin:0 auto 34px">
       <div class="stat"><b>18 €</b><span>Jusqu'au 20 octobre</span></div>
       <div class="stat"><b>20 €</b><span>Jusqu'à la clôture</span></div>
     </div>
@@ -1223,7 +1223,7 @@ footer a:hover{color:var(--gold);opacity:1}
       if(c2Note) c2Note.textContent = 'En ligne sur Njuko, jusqu\'à une semaine avant l\'épreuve';
       if(njuko){ njuko.classList.remove('cd-lock'); njuko.innerHTML = 'S\'inscrire sur Njuko <span class="arw">→</span>'; }
       if(heroCta){
-        heroCta.innerHTML = 'S\'inscrire · dès 16 € <span class="arw">→</span>';
+        heroCta.innerHTML = 'S\'inscrire · dès 18 € <span class="arw">→</span>';
         heroCta.setAttribute('href', 'https://in.njuko.com/taktiksport-corridanocturnesalins2026');
         heroCta.setAttribute('target', '_blank');
         heroCta.setAttribute('rel', 'noopener');
