@@ -362,20 +362,48 @@ nav a:hover{opacity:1}nav a:hover::after{width:100%}
 .info-grid p{margin:0;font-size:.93rem;opacity:.82}
 .todo{color:var(--blue);font-weight:600}
 
-/* ---------- partenaires ---------- */
-.partners{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(30px,4vw,48px)}
-.pslot{aspect-ratio:16/9;border:1px solid rgba(202,161,17,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:12px;font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;
-  text-transform:uppercase;color:rgba(243,240,231,.9);transition:.3s;line-height:1.4}
-.pslot.open{border-style:dashed;color:rgba(202,161,17,.6)}
-.pslot img{max-width:78%;max-height:64%;object-fit:contain;filter:brightness(0) invert(1);opacity:.92}
-.pslot .sub{display:block;font-size:.56rem;letter-spacing:.14em;opacity:.55;margin-top:8px;line-height:1.5}
-.partners.big{grid-template-columns:repeat(2,1fr)}
-.partners.big .pslot{aspect-ratio:32/9}
-.pslot.major{aspect-ratio:32/9;font-size:.9rem;letter-spacing:.16em;background:rgba(202,161,17,.06)}
-.p-group{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(202,161,17,.8);margin:clamp(30px,4vw,44px) 0 14px;display:block}
-.pslot:hover{background:rgba(202,161,17,.1);border-color:var(--gold)}
+/* ---------- partenaires (vignettes construites depuis sponsors.js) ---------- */
+.sp-head{display:flex;align-items:flex-end;gap:18px;margin:clamp(48px,6vw,84px) 0 clamp(24px,3vw,36px)}
+.sp-kicker{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0;flex:none}
+.sp-rule{flex:1;height:1px;margin-bottom:.7em;background:linear-gradient(90deg,var(--gold),rgba(202,161,17,.12))}
+.sp-count{font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(2.6rem,5.4vw,4rem);line-height:.78;color:var(--gold-lite);flex:none}
+.sp-wall{--spg:clamp(14px,1.8vw,26px);list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;column-gap:var(--spg);row-gap:clamp(30px,3.6vw,48px)}
+.sp{flex:0 0 calc((100% - 3 * var(--spg)) / 4);min-width:0}
+.sp-link{display:block;color:inherit;text-decoration:none}
+.sp-link:focus-visible{outline:none}
+.sp-plate{display:flex;align-items:center;justify-content:center;aspect-ratio:3/2;overflow:hidden;
+  border:1px solid rgba(202,161,17,.35);box-shadow:0 0 0 rgba(0,0,0,0);
+  transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,border-color .3s}
+.sp-plate img,.fs-plate img{display:block;height:auto;object-fit:contain;transition:filter .45s,opacity .45s}
+.sp-link:hover .sp-plate,.sp-link:focus-visible .sp-plate{transform:translateY(-6px);border-color:var(--gold-lite);box-shadow:0 20px 34px -20px rgba(0,0,0,.75)}
+.sp-link:focus-visible .sp-plate{outline:2px solid var(--gold-lite);outline-offset:4px}
+.sp-meta{display:flex;flex-direction:column;gap:6px;margin-top:16px;padding-left:12px;border-left:1px solid rgba(202,161,17,.55)}
+.sp-name{font-size:.84rem;font-weight:700;line-height:1.25;text-transform:uppercase;letter-spacing:.03em;font-variation-settings:'wdth' 112}
+.sp-host{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;color:var(--gold);opacity:.85;overflow-wrap:anywhere;transition:opacity .3s}
+.sp-link:hover .sp-host,.sp-link:focus-visible .sp-host{opacity:1}
+.sp-soutien{margin-top:clamp(52px,6vw,80px)}
+.sp-soutien ul{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(202,161,17,.3)}
+.sp-soutien li{padding:18px 16px 0}
+.sp-soutien li:first-child{padding-left:0}
+.sp-soutien li + li{border-left:1px solid rgba(202,161,17,.18)}
+.sp-soutien b{display:block;font-size:.9rem;text-transform:uppercase;letter-spacing:.03em;font-variation-settings:'wdth' 112}
+.sp-soutien li span{display:block;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-top:7px}
+.sp-soutien a{color:inherit;text-decoration:none}
+.sp-soutien a:hover b,.sp-soutien a:focus-visible b{color:var(--gold-lite)}
+.foot-sponsors{margin-top:clamp(38px,6vw,64px);padding-top:26px;border-top:1px solid rgba(202,161,17,.2)}
+.fs-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+footer li.fs{margin:0}
+footer a.fs-link{display:block;opacity:1}
+.fs-plate{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(202,161,17,.25);transition:transform .3s,border-color .3s}
+.fs-link:hover .fs-plate,.fs-link:focus-visible .fs-plate{transform:translateY(-3px);border-color:var(--gold)}
+@media(hover:hover) and (pointer:fine){
+  .sp-plate img,.fs-plate img{filter:grayscale(1) contrast(1.05);opacity:.9}
+  .sp-link:hover .sp-plate img,.sp-link:focus-visible .sp-plate img,.fs-link:hover img,.fs-link:focus-visible img{filter:none;opacity:1}
+}
+@media(prefers-reduced-motion:reduce){
+  .sp-plate,.sp-plate img,.fs-plate,.fs-plate img{transition:none}
+  .sp-link:hover .sp-plate,.sp-link:focus-visible .sp-plate,.fs-link:hover .fs-plate,.fs-link:focus-visible .fs-plate{transform:none}
+}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(202,161,17,.3);border:1px solid rgba(202,161,17,.3);margin-top:clamp(34px,5vw,54px)}
 .split > div{background:var(--blue);padding:clamp(24px,3vw,38px)}
 .split h4{margin:0 0 10px;font-size:1.05rem;text-transform:uppercase;font-variation-settings:'wdth' 112}
@@ -428,8 +456,10 @@ footer a:hover{color:var(--gold);opacity:1}
   .info-grid{grid-template-columns:1fr}
   .spec{grid-template-columns:repeat(2,1fr)}
   .sejour{grid-template-columns:1fr}
-  .partners,.partners.big{grid-template-columns:1fr}
-  .partners.big .pslot,.pslot.major{aspect-ratio:16/6}
+  .sp{flex-basis:calc((100% - 2 * var(--spg)) / 3)}
+  .sp-soutien ul{grid-template-columns:repeat(2,1fr)}
+  .sp-soutien li:nth-child(odd){padding-left:0;border-left:0}
+  .sp-soutien li:nth-child(n+3){padding-top:22px}
   .split{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
   .tl-row{grid-template-columns:74px 1fr}
@@ -453,6 +483,8 @@ footer a:hover{color:var(--gold);opacity:1}
   .stat{border-left:0;border-top:1px solid rgba(202,161,17,.3)}
   .stat:first-child{border-top:0}
   .header-cta{display:none}
+  .sp{flex-basis:calc((100% - var(--spg)) / 2)}
+  .sp-head{gap:12px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -1022,44 +1054,28 @@ footer a:hover{color:var(--gold);opacity:1}
     <div class="two-col rv">
       <div>
         <p class="eyebrow">Ils font la course</p>
-        <h2 class="display">Partenaires<br>&amp; bénévoles</h2>
+        <h2 class="display">Merci à nos<br>partenaires</h2>
       </div>
       <div class="side-note" style="border-color:var(--gold)">
         <p>Une corrida nocturne, ce sont des rues fermées par arrêté municipal, des escaliers éclairés, des galeries ouvertes et beaucoup de monde en gilet. Rien de tout cela ne tient sans les partenaires et les bénévoles du territoire.</p>
       </div>
     </div>
-    <span class="p-group">Partenaires principaux</span>
-    <div class="partners big">
-      <!-- Pour afficher un vrai logo : remplacer le texte par <img src="logos/decathlon.svg" alt="Decathlon">
-           Les logos sont automatiquement passés en blanc via filter: brightness(0) invert(1). -->
-      <div class="pslot major rv">Decathlon<span class="sub">Partenaire équipement &amp; ravitaillement</span></div>
-      <div class="pslot major open rv">Emplacement<br>partenaire principal</div>
-      <div class="pslot open rv">Emplacement<br>partenaire principal</div>
-      <div class="pslot open rv">Emplacement<br>partenaire principal</div>
+    <div class="sp-head rv">
+      <p class="sp-kicker">Partenaires de la première édition</p>
+      <span class="sp-rule" aria-hidden="true"></span>
+      <span class="sp-count" id="spCount" aria-hidden="true"></span>
     </div>
+    <!-- Les vignettes sont générées à partir de sponsors.js : c'est ce fichier qu'il faut modifier. -->
+    <ul class="sp-wall" id="spWall" aria-label="Nos partenaires"></ul>
 
-    <span class="p-group">Institutions &amp; patrimoine</span>
-    <div class="partners">
-      <div class="pslot rv">Ville de<br>Salins-les-Bains</div>
-      <div class="pslot rv">La Grande Saline<span class="sub">UNESCO</span></div>
-      <div class="pslot rv">Croix-Rouge<br>française<span class="sub">Secours</span></div>
-      <div class="pslot open rv">Emplacement<br>libre</div>
-          </div>
-
-    <span class="p-group">Prestataires &amp; fournisseurs</span>
-    <div class="partners">
-      <div class="pslot rv">Taktik Sport<span class="sub">Chronométrage</span></div>
-      <div class="pslot rv"><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">Njuko<span class="sub">Inscriptions</span></a></div>
-      <div class="pslot open rv">Emplacement<br>libre</div>
-      <div class="pslot open rv">Emplacement<br>libre</div>
-    </div>
-
-    <span class="p-group">Ils nous rejoignent — emplacements ouverts</span>
-    <div class="partners">
-      <div class="pslot open rv">Emplacement<br>libre</div>
-      <div class="pslot open rv">Emplacement<br>libre</div>
-      <div class="pslot open rv">Emplacement<br>libre</div>
-      <div class="pslot open rv">Emplacement<br>libre</div>
+    <div class="sp-soutien rv">
+      <p class="sp-kicker">Avec le soutien de</p>
+      <ul>
+        <li><b>La Grande Saline</b><span>UNESCO</span></li>
+        <li><b>Croix-Rouge française</b><span>Secours</span></li>
+        <li><b>Taktik Sport</b><span>Chronométrage</span></li>
+        <li><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Njuko (nouvel onglet)"><b>Njuko ↗</b><span>Inscriptions</span></a></li>
+      </ul>
     </div>
     <div class="split rv">
       <div>
@@ -1168,6 +1184,10 @@ footer a:hover{color:var(--gold);opacity:1}
         </ul>
       </div>
     </div>
+    <div class="foot-sponsors">
+      <h5>Merci à nos partenaires</h5>
+      <ul class="fs-row" id="footSponsors" aria-label="Nos partenaires"></ul>
+    </div>
     <div class="foot-bottom">
       <span>© 2026 Velcap Team — Photos Tom Gavand — Chronométrage Taktik Sport</span>
       <span class="vachette">Les vachettes attendent leur tour. À l'an prochain.</span>
@@ -1175,6 +1195,66 @@ footer a:hover{color:var(--gold);opacity:1}
   </div>
 </footer>
 
+<script src="sponsors.js"></script>
+<script>
+/* partenaires : vignettes construites à partir de la liste de sponsors.js */
+(function(){
+  var list = window.SPONSORS || [];
+  function host(url){
+    try { var u = new URL(url); return u.hostname.replace(/^www\./, '') + u.pathname.replace(/\/+$/, ''); }
+    catch(e){ return url; }
+  }
+  /* largeur du logo en % de sa vignette : chaque logo occupe une surface comparable,
+     qu'il soit carré ou très allongé, sans dépasser les marges de la vignette */
+  function logoWidth(s, plate, area, maxW, maxH){
+    var a = s.largeur / s.hauteur;
+    var w = Math.min(Math.sqrt(area * a / plate) * 100, maxW, maxH * a / plate);
+    return w.toFixed(1) + '%';
+  }
+  function node(tag, cls, text){
+    var n = document.createElement(tag);
+    if(cls) n.className = cls;
+    if(text) n.textContent = text;
+    return n;
+  }
+  function card(s, compact){
+    var li = node('li', compact ? 'fs' : 'sp rv');
+    var a = node('a', compact ? 'fs-link' : 'sp-link');
+    a.href = s.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.setAttribute('aria-label', 'Visiter le site ' + s.de + ' (nouvel onglet)');
+    var plate = node('span', compact ? 'fs-plate' : 'sp-plate');
+    plate.style.background = s.fond;
+    var img = node('img');
+    img.src = s.logo;
+    img.alt = 'Logo ' + s.nom;
+    img.width = s.largeur;
+    img.height = s.hauteur;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.style.width = compact ? logoWidth(s, 16/9, .3, 84, 70) : logoWidth(s, 3/2, .26, 82, 64);
+    plate.appendChild(img);
+    a.appendChild(plate);
+    if(!compact){
+      var meta = node('span', 'sp-meta');
+      meta.appendChild(node('span', 'sp-name', s.nom));
+      meta.appendChild(node('span', 'sp-host', host(s.url) + ' ↗'));
+      a.appendChild(meta);
+    }
+    li.appendChild(a);
+    return li;
+  }
+  var wall = document.getElementById('spWall'),
+      foot = document.getElementById('footSponsors'),
+      count = document.getElementById('spCount');
+  list.forEach(function(s){
+    if(wall) wall.appendChild(card(s, false));
+    if(foot) foot.appendChild(card(s, true));
+  });
+  if(count) count.textContent = (list.length < 10 ? '0' : '') + list.length;
+})();
+</script>
 <script>
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
