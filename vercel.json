@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/gpx/corrida-salins-les-bains.gpx",
+      "headers": [
+        { "key": "Content-Type", "value": "application/gpx+xml; charset=utf-8" },
+        { "key": "Content-Disposition", "value": "attachment; filename=\"corrida-salins-les-bains.gpx\"" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
+  ]
+}
