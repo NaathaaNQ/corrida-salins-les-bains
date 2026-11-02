@@ -139,6 +139,11 @@ nav a:hover{opacity:1}nav a:hover::after{width:100%}
   color:rgba(243,240,231,.5);margin:0 0 26px}
 .countdown.center{margin:0 auto 12px;background:rgba(1,16,43,.35)}
 .cd-lock{opacity:.5;pointer-events:none}
+.deadlines{display:flex;flex-wrap:wrap;gap:12px 30px;margin:26px 0 0;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,240,231,.86)}
+.deadlines.center{justify-content:center;margin:0 0 30px}
+.dl{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:3px 0 3px 12px;border-left:2px solid var(--gold);line-height:1.5}
+.dl b{font-weight:500;color:var(--gold-lite)}
+.dl.is-closed{border-left-color:rgba(243,240,231,.35);color:rgba(243,240,231,.6)}
 .cd-done{font-family:'DM Mono',monospace;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
 
 /* badge UNESCO */
@@ -514,6 +519,8 @@ footer a:hover{color:var(--gold);opacity:1}
   .stat{border-left:0;border-top:1px solid rgba(202,161,17,.3)}
   .stat:first-child{border-top:0}
   .header-cta{display:none}
+  .dl{flex-direction:column;align-items:flex-start;gap:1px}
+  .deadlines.center{display:grid;justify-content:center;text-align:left}
   .measured-grid{grid-template-columns:1fr 1fr;row-gap:16px}
   .measured-grid div:nth-child(3){padding-left:0;border-left:0}
   #profSvg{height:170px}
@@ -602,6 +609,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <a class="btn" id="heroCta" href="#inscription">Inscriptions&#8239;: jeudi 3 septembre, 19h <span class="arw">→</span></a>
       <a class="btn ghost" href="#parcours">Voir le parcours</a>
     </div>
+    <p class="deadlines"><span class="dl" data-closed-reg="Inscriptions closes"><b>Inscriptions ouvertes</b> jusqu'au vendredi 6 novembre</span><span class="dl" data-closed-meal="Réservations des repas closes"><b>Réservation des repas</b> jusqu'au mercredi 4 novembre</span></p>
   </div>
   <div class="facts">
     <div class="facts-grid">
@@ -792,9 +800,9 @@ footer a:hover{color:var(--gold);opacity:1}
       <span class="px">+9 €</span>
       <div>
         <h4>Le repas d'après-course</h4>
-        <p>Option à cocher au moment de l'inscription, pour les coureurs comme pour les accompagnants. Servi après la remise des récompenses, avec les producteurs du territoire. Places limitées&#8239;: il ne sera pas possible de l'ajouter le jour J.</p>
+        <p>Option à cocher au moment de l'inscription, pour les coureurs comme pour les accompagnants. Servi après la remise des récompenses, avec les producteurs du territoire. Places limitées&#8239;: réservation jusqu'au mercredi 4 novembre, pas d'ajout possible le jour J.</p>
       </div>
-      <span class="who">Supplément<br>à l'inscription</span>
+      <span class="who" data-closed-meal="Réservations des repas closes">Supplément<br>à l'inscription</span>
     </div>
     <p class="eyebrow" style="margin:clamp(40px,5vw,64px) 0 0">Fiches techniques</p>
     <div class="acc rv">
@@ -816,7 +824,7 @@ footer a:hover{color:var(--gold);opacity:1}
         <summary>Corrida Nocturne <span class="tag">U18 et plus</span></summary>
         <div class="body">
           <p>L'épreuve reine. Présentation des favoris sur la ligne, départ allée Marcou à 19h45, arrivée place de la Mairie. Trois boucles de centre-ville, avec deux traversées des sous-sols de la Grande Saline, deux montées dans les escaliers d'Arçon et un ravitaillement repassé à chaque tour.</p>
-          <p>La jauge est fixée à 500 participants adultes pour cette première édition&#8239;: les inscriptions ferment dès que la limite est atteinte, et au plus tard une semaine avant l'épreuve.</p>
+          <p>La jauge est fixée à 500 participants adultes pour cette première édition&#8239;: les inscriptions sont ouvertes jusqu'au vendredi 6 novembre, et ferment plus tôt si la limite est atteinte.</p>
           <div class="spec"><div><span class="k">Départ</span><span class="v">19h45 · allée Marcou</span></div><div><span class="k">Distance</span><span class="v">8,6 km</span></div><div><span class="k">Dénivelé</span><span class="v">220 m D+</span></div><div><span class="k">Parcours</span><span class="v">3 boucles</span></div><div><span class="k">Catégories</span><span class="v">U18 et plus · 16 ans et +</span></div><div><span class="k">Jauge</span><span class="v">500 dossards</span></div><div><span class="k">Tarif</span><span class="v">20 €</span></div><div><span class="k">Frontale</span><span class="v">Obligatoire</span></div></div>
         </div>
       </details>
@@ -845,7 +853,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="tl-row rv"><span class="tl-time">19h30</span><span class="tl-title">Présentation des favoris</span><span class="tl-desc">Palmarès au micro sur la ligne de départ, allée Marcou.</span></div>
       <div class="tl-row key rv"><span class="tl-time">19h45</span><span class="tl-title">Départ de la Corrida Nocturne</span><span class="tl-desc">U18 et plus. Trois boucles, deux passages sous la Grande Saline, deux montées d'Arçon.</span></div>
       <div class="tl-row rv"><span class="tl-time">21h30</span><span class="tl-title">Remise des récompenses</span><span class="tl-desc">Place de la Mairie. Scratch hommes et femmes, catégories U14 à U20.</span></div>
-      <div class="tl-row rv"><span class="tl-time">22h00</span><span class="tl-title">Repas et soirée</span><span class="tl-desc">Repas en option, 9 € à réserver à l'inscription. Puis bal ouvert aux coureurs, bénévoles et habitants.</span></div>
+      <div class="tl-row rv"><span class="tl-time">22h00</span><span class="tl-title">Repas et soirée</span><span class="tl-desc">Repas en option, 9 € à réserver à l'inscription jusqu'au mercredi 4 novembre. Puis bal ouvert aux coureurs, bénévoles et habitants.</span></div>
     </div>
   </div>
 </section>
@@ -922,7 +930,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="rv"><span class="k">Où</span><h4>Départ allée Marcou</h4><p>Arrivée place de la Mairie, à Salins-les-Bains (39110). Accès par la N83&#8239;: Besançon 45 min, Dole 50 min, Lons-le-Saunier 40 min.</p></div>
       <div class="rv"><span class="k">Quand</span><h4>Samedi 7 novembre 2026</h4><p>Jungle Run à 18h15, Mini-Corrida à 18h45, Corrida Nocturne à 19h45. Remise des récompenses à 21h30.</p></div>
       <div class="rv"><span class="k">Dossards</span><h4>Trois retraits possibles</h4><p>Deux demi-journées au Decathlon de Besançon la semaine précédant la course, une permanence à Salins-les-Bains le vendredi soir, et le jour J sur le village. Pièce d'identité et justificatif obligatoires.</p></div>
-      <div class="rv"><span class="k">Inscriptions</span><h4><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:inherit">En ligne, sur Njuko ↗</a></h4><p>Corrida&#8239;: 20 € jusqu'à la clôture, une semaine avant l'épreuve. Mini-Corrida 7 €, Jungle Run 4 €.</p></div>
+      <div class="rv"><span class="k">Inscriptions</span><h4><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:inherit">En ligne, sur Njuko ↗</a></h4><p>Ouvertes jusqu'au vendredi 6 novembre. Corrida 20 €, Mini-Corrida 7 €, Jungle Run 4 €.</p></div>
       <div class="rv"><span class="k">Justificatif</span><h4>Licence FFA ou PPS</h4><p>Au choix&#8239;: une licence FFA (Athlé Compétition, Athlé Entreprise ou Athlé Running) en cours de validité, ou un Parcours Prévention Santé (PPS). Les licences délivrées par une fédération étrangère sont acceptées.</p></div>
       <div class="rv"><span class="k">Matériel</span><h4 class="todo">Lampe frontale obligatoire</h4><p>Elle est exigée pour tous les participants, sur les trois épreuves. Sans frontale, pas de départ. Une tenue claire ou réfléchissante est en plus recommandée.</p></div>
       <div class="rv"><span class="k">Chrono</span><h4>Puce électronique</h4><p>Chronométrage Taktik Sport pour la Corrida et la Mini-Corrida. Classement scratch et par catégories FFA du U12 au U23, seuls les premiers de chaque catégorie étant récompensés. Résultats affichés à l'arrivée et publiés en ligne.</p></div>
@@ -930,7 +938,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="rv"><span class="k">Services</span><h4>Vestiaire, sans douche</h4><p>Un vitabri fait office de vestiaire à proximité de la zone de départ et d'arrivée. Aucune douche sur le site.</p></div>
       <div class="rv"><span class="k">Sécurité</span><h4>Croix-Rouge et médecin de course</h4><p>Dispositif de secours de la Croix-Rouge française, médecin de course présent sur toute la manifestation, signaleurs et balisage nocturne dédié. Circulation réglementée par arrêtés municipaux.</p></div>
       <div class="rv"><span class="k">Assurance</span><h4>RC organisateur</h4><p>Velcap Team souscrit une responsabilité civile organisateur (article L321-1 du Code du sport). Les licenciés FFA sont couverts par leur licence&#8239;; les non-licenciés sont invités à vérifier leur propre garantie individuelle accident.</p></div>
-      <div class="rv"><span class="k">Repas</span><h4>Option à 9 €</h4><p>Le repas d'après-course se réserve au moment de l'inscription, pour les coureurs comme pour les accompagnants. Places limitées, pas d'ajout possible le jour de la course.</p></div>
+      <div class="rv"><span class="k">Repas</span><h4>Option à 9 €</h4><p>Le repas d'après-course se réserve au moment de l'inscription, pour les coureurs comme pour les accompagnants. Réservation jusqu'au mercredi 4 novembre, places limitées.</p></div>
       <div class="rv"><span class="k">Patrimoine</span><h4>Profitez-en, respectez-le</h4><p>Le passage dans la Grande Saline est un moment magnifique. C'est aussi un monument classé&#8239;: profitez du site, mais respectez-le.</p></div>
       <div class="rv"><span class="k">Public</span><h4>Entrée libre</h4><p>Tout le parcours est ouvert aux spectateurs. Les meilleurs postes&#8239;: les escaliers d'Arçon, la sortie des souterrains et la ligne d'arrivée, place de la Mairie.</p></div>
       <div class="rv"><span class="k">Stationnement</span><h4>Parkings en périphérie</h4><p>La circulation est réglementée par arrêtés municipaux le soir de la course. Parkings fléchés en entrée de ville, quelques minutes à pied du village.</p></div>
@@ -965,7 +973,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <details>
         <summary>Combien coûte l'inscription&#8239;? <span class="tag">Article 6</span></summary>
         <div class="body">
-          <p>Les inscriptions se font exclusivement en ligne, via <a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:var(--gold)">la page Njuko de l'épreuve</a>. Pour la Corrida Nocturne&#8239;: 20 € jusqu'à la clôture, fixée une semaine avant l'épreuve. La Mini-Corrida est à 7 €, le Jungle Run à 4 €.</p>
+          <p>Les inscriptions se font exclusivement en ligne, via <a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:var(--gold)">la page Njuko de l'épreuve</a>. Elles sont ouvertes jusqu'au vendredi 6 novembre. La Corrida Nocturne est à 20 €, la Mini-Corrida à 7 €, le Jungle Run à 4 €.</p>
           <p>La jauge est de 500 participants adultes&#8239;: mieux vaut ne pas attendre la clôture.</p>
         </div>
       </details>
@@ -1016,7 +1024,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <details>
         <summary>Comment réserver le repas&#8239;?</summary>
         <div class="body">
-          <p>Le repas d'après-course est une option à <b>9 €</b>, à cocher au moment de l'inscription en ligne. Il est ouvert aux coureurs comme aux accompagnants. Le nombre de couverts étant limité, il ne sera pas possible de l'ajouter sur place le jour de la course.</p>
+          <p>Le repas d'après-course est une option à <b>9 €</b>, à cocher au moment de l'inscription en ligne. Il est ouvert aux coureurs comme aux accompagnants. Le nombre de couverts étant limité, la réservation est possible jusqu'au mercredi 4 novembre, et pas sur place le jour de la course.</p>
         </div>
       </details>
       <details>
@@ -1123,7 +1131,7 @@ footer a:hover{color:var(--gold);opacity:1}
     <img class="cta-bull" src="images/cta-bull.png" alt="">
     <p class="eyebrow" style="justify-content:center" id="cdEcho">Première édition · samedi 7 novembre 2026</p>
     <h2 class="display">Prenez votre<br>dossard</h2>
-    <p class="mono" style="font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 28px">500 dossards adultes · clôture une semaine avant l'épreuve</p>
+    <p class="deadlines center"><span class="dl" data-closed-reg="Inscriptions closes"><b>Inscriptions ouvertes</b> jusqu'au vendredi 6 novembre</span><span class="dl" data-closed-meal="Réservations des repas closes"><b>Réservation des repas</b> jusqu'au mercredi 4 novembre</span></p>
     <div class="countdown center" id="countdown2" role="timer">
       <div class="cd-unit"><b id="cd2D">—</b><span>Jours</span></div>
       <div class="cd-unit"><b id="cd2H">—</b><span>Heures</span></div>
@@ -1132,9 +1140,9 @@ footer a:hover{color:var(--gold);opacity:1}
     </div>
     <p class="cd-note" style="text-align:center;color:rgba(243,240,231,.65)" id="cd2Note">Avant l'ouverture des inscriptions&#8239;· jeudi 3 septembre 2026 à 19h00</p>
     <p class="price-anchor">Une visite guidée de la Grande Saline coûte à elle seule <b>une dizaine d'euros</b>, de jour, au pas, guide en tête. Le dossard de la Corrida est à <b>20 €</b> et vous y fait passer deux fois, de nuit, mise en lumière, avec 8,6 km de ville fermée autour.</p>
-    <p class="lead" style="font-size:1rem">500 dossards adultes seulement&#8239;: la jauge est imposée par le passage souterrain. Clôture une semaine avant l'épreuve, ou avant si la limite est atteinte.</p>
+    <p class="lead" style="font-size:1rem">500 dossards adultes seulement&#8239;: la jauge est imposée par le passage souterrain. Les inscriptions ferment plus tôt si cette limite est atteinte.</p>
     <div class="stats stats-1" style="max-width:300px;margin:0 auto 34px">
-      <div class="stat"><b>20 €</b><span>Jusqu'à la clôture</span></div>
+      <div class="stat"><b>20 €</b><span>Jusqu'au vendredi 6 novembre</span></div>
     </div>
     <div class="cta-row">
       <a class="btn cd-lock" id="njukoBtn" href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener">Ouverture le 3 septembre à 19h00 <span class="arw">→</span></a>
@@ -1324,7 +1332,7 @@ footer a:hover{color:var(--gold);opacity:1}
     var left = OPEN_DATE - new Date();
     if(left <= 0){
       if(c2Box) c2Box.innerHTML = '<div class="cd-unit" style="min-width:auto"><b class="cd-done">Inscriptions ouvertes</b></div>';
-      if(c2Note) c2Note.textContent = 'En ligne sur Njuko, jusqu\'à une semaine avant l\'épreuve';
+      if(c2Note) c2Note.textContent = 'En ligne, sur Njuko';
       if(njuko){ njuko.classList.remove('cd-lock'); njuko.innerHTML = 'S\'inscrire sur Njuko <span class="arw">→</span>'; }
       if(heroCta){
         heroCta.innerHTML = 'S\'inscrire · 20 € <span class="arw">→</span>';
@@ -1358,6 +1366,45 @@ footer a:hover{color:var(--gold);opacity:1}
       a.setAttribute('download', 'reglement-corrida-salins-2026.pdf');
     });
   }
+
+  /* dates limites, heure de Paris : l'affichage bascule seul une fois la date passée.
+     La fermeture réelle des inscriptions et de l'option repas se règle sur Njuko. */
+  (function(){
+    var MEAL_END = new Date('2026-11-05T00:00:00+01:00'); /* repas : jusqu'au mercredi 4 novembre 23h59 */
+    var REG_END  = new Date('2026-11-07T00:00:00+01:00'); /* inscriptions : jusqu'au vendredi 6 novembre 23h59 */
+    var closeTexts = function(kind){
+      document.querySelectorAll('[data-closed-' + kind + ']').forEach(function(el){
+        el.textContent = el.getAttribute('data-closed-' + kind);
+        el.classList.add('is-closed');
+      });
+    };
+    var lockButton = function(btn){
+      if(!btn) return;
+      btn.textContent = 'Inscriptions closes';
+      btn.removeAttribute('href');
+      btn.removeAttribute('target');
+      btn.setAttribute('aria-disabled', 'true');
+      btn.classList.add('cd-lock');
+    };
+    var apply = function(){
+      var now = new Date();
+      if(now >= MEAL_END) closeTexts('meal');
+      if(now >= REG_END){
+        closeTexts('reg');
+        lockButton(document.getElementById('heroCta'));
+        lockButton(document.getElementById('njukoBtn'));
+        var box = document.getElementById('countdown2'), note = document.getElementById('cd2Note');
+        if(box) box.innerHTML = '<div class="cd-unit" style="min-width:auto"><b class="cd-done">Inscriptions closes</b></div>';
+        if(note) note.textContent = 'Rendez-vous samedi 7 novembre à Salins-les-Bains';
+      }
+    };
+    apply();
+    /* si la page reste ouverte au moment d'une échéance, elle se met à jour toute seule */
+    [MEAL_END, REG_END].forEach(function(d){
+      var wait = d - new Date();
+      if(wait > 0 && wait < 2147483647) setTimeout(apply, wait + 1000);
+    });
+  })();
 
   /* menu mobile */
   var mb = document.getElementById('menuBtn'), mp = document.getElementById('menuPanel');
