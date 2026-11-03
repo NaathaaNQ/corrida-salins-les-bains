@@ -347,13 +347,43 @@ nav a:hover{opacity:1}nav a:hover::after{width:100%}
 .option p{margin:0;font-size:.94rem;opacity:.82;max-width:60ch}
 .option .who{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-align:right}
 
-/* ---------- retraits dossards ---------- */
-.retraits{list-style:none;margin:clamp(26px,3vw,36px) 0 0;padding:0;border-top:1px solid rgba(202,161,17,.3)}
-.retraits li{display:grid;grid-template-columns:200px 240px 1fr;gap:clamp(14px,2vw,32px);
-  padding:16px 0;border-bottom:1px solid rgba(202,161,17,.22);align-items:baseline}
-.retraits .lieu{font-weight:700;text-transform:uppercase;font-variation-settings:'wdth' 112;font-size:1rem}
-.retraits .quand{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--gold)}
-.retraits .det{font-size:.9rem;opacity:.75}
+/* ---------- retrait des dossards : bloc « info importante » ---------- */
+.retrait-card{background:rgba(1,16,43,.88);color:var(--salt);border:1px solid rgba(202,161,17,.45);border-top:3px solid var(--gold);
+  padding:clamp(16px,1.8vw,22px) clamp(16px,1.8vw,22px) clamp(8px,1vw,12px);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.rc-kicker{display:flex;align-items:center;gap:9px;margin:0 0 6px;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ember-lite)}
+.rc-kicker::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--ember-lite);box-shadow:0 0 0 3px rgba(240,129,60,.25)}
+.rc-title{margin:0 0 12px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 116;font-weight:800;font-size:clamp(1.05rem,1.6vw,1.3rem);line-height:1.1;letter-spacing:.02em;text-transform:uppercase;color:var(--salt)}
+.rc-slots{list-style:none;margin:0;padding:0}
+.rc-slot{display:grid;grid-template-columns:54px minmax(0,1fr);gap:14px;align-items:center;padding:10px 0;border-top:1px solid rgba(202,161,17,.22)}
+.rc-date{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 0;border:1px solid rgba(202,161,17,.45);
+  font-family:'DM Mono',monospace;font-size:.55rem;line-height:1.2;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,240,231,.78)}
+.rc-date b{margin:2px 0;font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.6rem;line-height:1;letter-spacing:0;color:var(--gold-lite)}
+.rc-body{display:flex;flex-direction:column;gap:3px;min-width:0}
+.rc-time{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-family:'DM Mono',monospace;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lite)}
+.rc-place{font-weight:700;font-size:.93rem;line-height:1.3}
+.rc-addr{font-size:.84rem;line-height:1.4;color:rgba(243,240,231,.72)}
+.rc-note{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;font-size:.82rem;line-height:1.35;color:rgba(243,240,231,.85)}
+.rc-badge{display:inline-block;padding:3px 7px;font-family:'DM Mono',monospace;font-size:.56rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;line-height:1.3;background:var(--ember-lite);color:var(--ink)}
+.rc-badge.jj{background:transparent;color:var(--gold-lite);border:1px solid rgba(202,161,17,.7)}
+.rc-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.rc-foot{margin:4px 0 0;padding:12px 0 6px;border-top:1px solid rgba(202,161,17,.22);font-size:.84rem;color:rgba(243,240,231,.75)}
+.hero .retrait-card{max-width:460px;margin:18px 0 4px}
+.hero .rc-title{margin-bottom:8px}
+.hero .rc-slot{grid-template-columns:48px minmax(0,1fr);gap:12px;padding:8px 0}
+.hero .rc-date{padding:4px 0}
+.hero .rc-date b{font-size:1.35rem}
+@media(min-width:1200px){
+  .hero-inner{display:grid;grid-template-columns:minmax(0,1fr) 350px;column-gap:clamp(28px,3vw,48px);align-items:start}
+  .hero-inner > *{grid-column:1 / -1;justify-self:start}
+  .hero-inner > .hero-logo,.hero-inner > .unesco-chip,.hero-inner > .hero-date{grid-column:1}
+  .hero .retrait-card{grid-column:2;grid-row:1 / span 3;justify-self:stretch;max-width:none;margin:0}
+}
+.retrait-card.rc-wide{background:var(--ink);margin-top:clamp(18px,2.4vw,26px);padding:clamp(20px,2.6vw,32px) clamp(20px,2.6vw,32px) clamp(10px,1.4vw,16px)}
+.rc-wide .rc-title{font-size:clamp(1.3rem,2.4vw,1.8rem);margin-bottom:16px}
+.rc-wide .rc-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.rc-wide .rc-slot{grid-template-columns:62px minmax(0,1fr);align-items:start;padding:16px 18px 14px;border-top:0;border-left:1px solid rgba(202,161,17,.22)}
+.rc-wide .rc-slot:first-child{padding-left:0;border-left:0}
+.rc-wide .rc-date b{font-size:1.9rem}
 
 /* ---------- fête ---------- */
 .fete{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,30px);margin-top:clamp(34px,5vw,56px)}
@@ -487,8 +517,9 @@ footer a:hover{color:var(--gold);opacity:1}
   .reveal3d{grid-template-columns:1fr}
   .option{grid-template-columns:1fr;text-align:left}
   .option .who{text-align:left}
-  .retraits li{grid-template-columns:1fr}
-  .retraits .det{grid-column:1}
+  .rc-wide .rc-slots{grid-template-columns:1fr}
+  .rc-wide .rc-slot{padding:14px 0 10px;border-left:0;border-top:1px solid rgba(202,161,17,.22)}
+  .rc-wide .rc-slot:first-child{padding-left:0;border-top:0}
   .info-grid{grid-template-columns:1fr}
   .spec{grid-template-columns:repeat(2,1fr)}
   .sejour{grid-template-columns:1fr}
@@ -597,6 +628,15 @@ footer a:hover{color:var(--gold);opacity:1}
     <div class="unesco-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2.5 3.5 7v2h17V7L12 2.5Z"/><path d="M6 9v9M10 9v9M14 9v9M18 9v9"/><path d="M2.5 18h19v3.5h-19z"/></svg><span><span class="t1">Patrimoine mondial de l'UNESCO</span><span class="t2">Grande Saline de Salins-les-Bains · inscrite en 2009</span></span></div>
     <p class="hero-date"><b>Première édition</b><span class="dot"></span>Salins-les-Bains, Jura<span class="dot"></span>Samedi 7 novembre 2026</p>
     <h1>Corrida nocturne<em>Salins-les-Bains</em></h1>
+    <aside class="retrait-card" data-hide-after="2026-11-08T00:00:00+01:00" aria-labelledby="rcHeroTitle">
+      <p class="rc-kicker">Info importante</p>
+      <h2 class="rc-title" id="rcHeroTitle">Retrait des dossards</h2>
+      <ol class="rc-slots">
+        <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Mer.</span><b>4</b><span>nov.</span></span><span class="rc-sr">Mercredi 4 novembre</span><span class="rc-body"><span class="rc-time">14h à 19h</span><span class="rc-place">Décathlon Besançon</span><span class="rc-note"><span class="rc-badge">Tombola</span>Billets disponibles sur place</span></span></li>
+        <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Ven.</span><b>6</b><span>nov.</span></span><span class="rc-sr">Vendredi 6 novembre</span><span class="rc-body"><span class="rc-time">17h à 19h</span><span class="rc-place">Décathlon Besançon et Salins-les-Bains</span></span></li>
+        <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Sam.</span><b>7</b><span>nov.</span></span><span class="rc-sr">Samedi 7 novembre</span><span class="rc-body"><span class="rc-time">À partir de 18h <span class="rc-badge jj">Jour de course</span></span><span class="rc-place">Sur place, à Salins-les-Bains</span></span></li>
+      </ol>
+    </aside>
     <p class="hero-tag">8,6 km en trois boucles dans la ville du sel, à la nuit tombée. Deux passages sous les voûtes de la Grande Saline — un monument classé au patrimoine mondial de l'UNESCO, que personne n'a jamais traversé en courant. Et deux montées dans les escaliers d'Arçon, au milieu du public.</p>
     <div class="countdown" id="countdown" role="timer" aria-live="off">
       <div class="cd-unit"><b id="cdD">—</b><span>Jours</span></div>
@@ -841,12 +881,14 @@ footer a:hover{color:var(--gold);opacity:1}
         <h2 class="display">Le déroulé<br>de la soirée</h2>
       </div>
       <div class="side-note" style="border-color:var(--gold)">
-        <p>Le retrait des dossards commence dès le vendredi soir. Le samedi, le village ouvre en fin d'après-midi et ne se vide qu'au milieu de la nuit&#8239;: trois courses, une remise des récompenses, un repas et un bal.</p>
+        <p>Le retrait des dossards commence dès le mercredi 4 novembre, à Décathlon Besançon. Le samedi, le village ouvre en fin d'après-midi et ne se vide qu'au milieu de la nuit&#8239;: trois courses, une remise des récompenses, un repas et un bal.</p>
       </div>
     </div>
     <div class="tl">
-      <div class="tl-row rv"><span class="tl-time">Ven. 18h00</span><span class="tl-title">Retrait des dossards</span><span class="tl-desc">Vendredi 6 novembre, de 18h00 à 20h30, dans une salle mise à disposition par la Mairie.</span></div>
-      <div class="tl-row rv"><span class="tl-time">17h00</span><span class="tl-title">Ouverture du village</span><span class="tl-desc">Retrait des dossards jusqu'à une heure avant chaque départ. Stands partenaires et animations.</span></div>
+      <div class="tl-row rv"><span class="tl-time">Mer. 14h00</span><span class="tl-title">Retrait des dossards</span><span class="tl-desc">Mercredi 4 novembre, de 14h à 19h, à Décathlon Besançon. Billets de tombola disponibles sur place.</span></div>
+      <div class="tl-row rv"><span class="tl-time">Ven. 17h00</span><span class="tl-title">Retrait des dossards</span><span class="tl-desc">Vendredi 6 novembre, de 17h à 19h, à Décathlon Besançon et à Salins-les-Bains, dans une salle mise à disposition par la Mairie.</span></div>
+      <div class="tl-row rv"><span class="tl-time">17h00</span><span class="tl-title">Ouverture du village</span><span class="tl-desc">Stands partenaires et animations.</span></div>
+      <div class="tl-row rv"><span class="tl-time">18h00</span><span class="tl-title">Retrait des dossards</span><span class="tl-desc">Sur place, sur le village, le jour de la course.</span></div>
       <div class="tl-row rv"><span class="tl-time">18h00</span><span class="tl-title">Buvette et restauration</span><span class="tl-desc">Écocups consignées. Le site s'anime avant même le premier départ.</span></div>
       <div class="tl-row rv"><span class="tl-time">18h15</span><span class="tl-title">Départ Jungle Run</span><span class="tl-desc">U12 et moins, parcours d'obstacles, sans classement.</span></div>
       <div class="tl-row rv"><span class="tl-time">18h45</span><span class="tl-title">Départ Mini-Corrida</span><span class="tl-desc">U14 et U16, deux boucles du circuit.</span></div>
@@ -929,7 +971,7 @@ footer a:hover{color:var(--gold);opacity:1}
     <div class="info-grid">
       <div class="rv"><span class="k">Où</span><h4>Départ allée Marcou</h4><p>Arrivée place de la Mairie, à Salins-les-Bains (39110). Accès par la N83&#8239;: Besançon 45 min, Dole 50 min, Lons-le-Saunier 40 min.</p></div>
       <div class="rv"><span class="k">Quand</span><h4>Samedi 7 novembre 2026</h4><p>Jungle Run à 18h15, Mini-Corrida à 18h45, Corrida Nocturne à 19h45. Remise des récompenses à 21h30.</p></div>
-      <div class="rv"><span class="k">Dossards</span><h4>Trois retraits possibles</h4><p>Deux demi-journées au Decathlon de Besançon la semaine précédant la course, une permanence à Salins-les-Bains le vendredi soir, et le jour J sur le village. Pièce d'identité et justificatif obligatoires.</p></div>
+      <div class="rv"><span class="k">Dossards</span><h4>Trois créneaux de retrait</h4><p>Mercredi 4 novembre de 14h à 19h à Décathlon Besançon, vendredi 6 novembre de 17h à 19h à Décathlon Besançon et à Salins-les-Bains, samedi 7 novembre à partir de 18h sur le village. Pièce d'identité et justificatif obligatoires.</p></div>
       <div class="rv"><span class="k">Inscriptions</span><h4><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:inherit">En ligne, sur Njuko ↗</a></h4><p>Ouvertes jusqu'au vendredi 6 novembre. Corrida 20 €, Mini-Corrida 7 €, Jungle Run 4 €.</p></div>
       <div class="rv"><span class="k">Justificatif</span><h4>Licence FFA ou PPS</h4><p>Au choix&#8239;: une licence FFA (Athlé Compétition, Athlé Entreprise ou Athlé Running) en cours de validité, ou un Parcours Prévention Santé (PPS). Les licences délivrées par une fédération étrangère sont acceptées.</p></div>
       <div class="rv"><span class="k">Matériel</span><h4 class="todo">Lampe frontale obligatoire</h4><p>Elle est exigée pour tous les participants, sur les trois épreuves. Sans frontale, pas de départ. Une tenue claire ou réfléchissante est en plus recommandée.</p></div>
@@ -947,13 +989,19 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="rv"><span class="k">Environnement</span><h4>Tri, écocups, covoiturage</h4><p>Poubelles de tri sélectif sur le parcours et aux points stratégiques, buvette en écocups consignées. Le covoiturage est encouragé pour venir sur l'événement.</p></div>
     </div>
 
-    <p class="eyebrow" style="margin:clamp(48px,6vw,76px) 0 0">Où retirer son dossard</p>
-    <ul class="retraits rv">
-      <li><span class="lieu">Decathlon Besançon</span><span class="quand todo">Dates à venir</span><span class="det">Deux demi-journées dédiées, la semaine précédant la course.</span></li>
-      <li><span class="lieu">Salins-les-Bains</span><span class="quand">Ven. 6 nov · 18h00–20h30</span><span class="det">La veille de la course, dans une salle mise à disposition par la Mairie.</span></li>
-      <li><span class="lieu">Salins-les-Bains</span><span class="quand">Sam. 7 nov · dès 17h00</span><span class="det">Sur le village, jusqu'à une heure avant le départ de chaque épreuve.</span></li>
-    </ul>
-    <p class="mono" style="font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-top:16px">Les dates des demi-journées au Decathlon de Besançon seront précisées avant l'événement</p>
+    <div data-hide-after="2026-11-08T00:00:00+01:00">
+      <p class="eyebrow" style="margin:clamp(48px,6vw,76px) 0 0">Où retirer son dossard</p>
+      <section class="retrait-card rc-wide rv" aria-labelledby="rcInfosTitle">
+        <p class="rc-kicker">Info importante</p>
+        <h3 class="rc-title" id="rcInfosTitle">Retrait des dossards</h3>
+        <ol class="rc-slots">
+          <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Mer.</span><b>4</b><span>nov.</span></span><span class="rc-sr">Mercredi 4 novembre</span><span class="rc-body"><span class="rc-time">14h à 19h</span><span class="rc-place">Décathlon Besançon</span><span class="rc-addr">Rue André Breton, 25000 Besançon</span><span class="rc-note"><span class="rc-badge">Tombola</span>Billets de tombola disponibles sur place</span></span></li>
+          <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Ven.</span><b>6</b><span>nov.</span></span><span class="rc-sr">Vendredi 6 novembre</span><span class="rc-body"><span class="rc-time">17h à 19h</span><span class="rc-place">Décathlon Besançon et Salins-les-Bains</span><span class="rc-addr">Besançon&#8239;: rue André Breton. Salins-les-Bains&#8239;: salle mise à disposition par la Mairie.</span></span></li>
+          <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Sam.</span><b>7</b><span>nov.</span></span><span class="rc-sr">Samedi 7 novembre</span><span class="rc-body"><span class="rc-time">À partir de 18h <span class="rc-badge jj">Jour de course</span></span><span class="rc-place">Sur place, à Salins-les-Bains</span><span class="rc-addr">Sur le village de la course.</span></span></li>
+        </ol>
+        <p class="rc-foot">Pièce d'identité et justificatif (licence FFA ou PPS) obligatoires.</p>
+      </section>
+    </div>
 
     <p class="eyebrow" style="margin:clamp(48px,6vw,76px) 0 0">Le règlement en clair</p>
     <div class="acc rv">
@@ -1017,7 +1065,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <details>
         <summary>Où et quand retirer mon dossard&#8239;? <span class="tag">Article 7</span></summary>
         <div class="body">
-          <p>Trois possibilités&#8239;: <b>deux demi-journées au Decathlon de Besançon</b> la semaine précédant la course, dont les dates seront précisées avant l'événement&#8239;; une permanence à <b>Salins-les-Bains le vendredi 6 novembre</b>, de 18h00 à 20h30, dans une salle mise à disposition par la Mairie&#8239;; et enfin <b>le samedi sur le village</b>, jusqu'à une heure avant le départ de chaque épreuve.</p>
+          <p>Trois créneaux&#8239;: <b>mercredi 4 novembre, de 14h à 19h</b>, à Décathlon Besançon (rue André Breton), avec des billets de tombola disponibles sur place&#8239;; <b>vendredi 6 novembre, de 17h à 19h</b>, à Décathlon Besançon et à Salins-les-Bains, dans une salle mise à disposition par la Mairie&#8239;; et <b>samedi 7 novembre, à partir de 18h</b>, sur place à Salins-les-Bains, sur le village.</p>
           <p>Le retrait se fait sur présentation d'une pièce d'identité et de l'un des justificatifs prévus à l'article 5 (licence FFA ou PPS).</p>
         </div>
       </details>
@@ -1049,7 +1097,7 @@ footer a:hover{color:var(--gold);opacity:1}
         <h2 class="display">Venir<br>&amp; séjourner</h2>
       </div>
       <div class="side-note" style="border-color:var(--gold)">
-        <p>Le retrait des dossards ouvre dès le vendredi soir et la soirée du samedi finit tard&#8239;: beaucoup de coureurs dorment sur place. Salins est une petite ville et l'hébergement part vite — réservez en même temps que le dossard.</p>
+        <p>Le retrait des dossards se fait aussi à Salins-les-Bains le vendredi soir, et la soirée du samedi finit tard&#8239;: beaucoup de coureurs dorment sur place. Salins est une petite ville et l'hébergement part vite&#8239;: réservez en même temps que le dossard.</p>
       </div>
     </div>
     <div class="sejour">
@@ -1402,6 +1450,20 @@ footer a:hover{color:var(--gold);opacity:1}
     /* si la page reste ouverte au moment d'une échéance, elle se met à jour toute seule */
     [MEAL_END, REG_END].forEach(function(d){
       var wait = d - new Date();
+      if(wait > 0 && wait < 2147483647) setTimeout(apply, wait + 1000);
+    });
+  })();
+
+  /* blocs « info importante » datés : masqués automatiquement après leur échéance (heure de Paris) */
+  (function(){
+    var dated = document.querySelectorAll('[data-hide-after]');
+    var apply = function(){
+      var now = new Date();
+      dated.forEach(function(el){ if(now >= new Date(el.getAttribute('data-hide-after'))) el.hidden = true; });
+    };
+    apply();
+    dated.forEach(function(el){
+      var wait = new Date(el.getAttribute('data-hide-after')) - new Date();
       if(wait > 0 && wait < 2147483647) setTimeout(apply, wait + 1000);
     });
   })();
