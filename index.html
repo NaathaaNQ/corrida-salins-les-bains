@@ -53,7 +53,7 @@ h3.display{font-size:clamp(1.25rem,2.4vw,1.7rem);letter-spacing:-.01em}
 
 .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
 section{position:relative}
-section[id]{scroll-margin-top:76px}
+section[id]{scroll-margin-top:calc(76px + var(--rbh,0px))}
 .pad{padding-block:clamp(72px,10vw,132px)}
 .dark{background:var(--blue);color:var(--salt)}
 .deep{background:var(--ink);color:var(--salt)}
@@ -78,7 +78,8 @@ nav a{
 }
 nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .3s}
 nav a:hover{opacity:1}nav a:hover::after{width:100%}
-.nav-links{display:flex;gap:clamp(14px,2vw,30px)}
+.nav-links{display:flex;gap:clamp(12px,1.5vw,30px)}
+.nav-links a{white-space:nowrap}
 .btn{
   display:inline-flex;align-items:center;gap:10px;
   font-family:'DM Mono',monospace;font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;
@@ -93,7 +94,7 @@ nav a:hover{opacity:1}nav a:hover::after{width:100%}
 .menu-toggle{display:none;background:none;border:1px solid rgba(202,161,17,.5);color:var(--gold);
   width:42px;height:38px;align-items:center;justify-content:center;cursor:pointer;padding:0}
 .menu-toggle svg{width:18px;height:12px}
-.menu-panel{position:fixed;inset:56px 0 auto 0;background:rgba(1,20,50,.98);backdrop-filter:blur(14px);
+.menu-panel{position:fixed;inset:calc(56px + var(--rbh,0px)) 0 auto 0;background:rgba(1,20,50,.98);backdrop-filter:blur(14px);
   border-bottom:1px solid rgba(202,161,17,.3);padding:10px var(--gut) 22px;display:none;z-index:59}
 .menu-panel.open{display:block}
 .menu-panel a{display:block;padding:13px 0;border-bottom:1px solid rgba(202,161,17,.16);
@@ -307,7 +308,7 @@ nav a:hover{opacity:1}nav a:hover::after{width:100%}
 /* ---------- trophée ---------- */
 .trophy{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,5vw,72px);align-items:center}
 .trophy-img{position:relative;border:1px solid rgba(202,161,17,.3)}
-.trophy-img img{filter:grayscale(1) contrast(1.06)}
+.trophy-img img{width:100%;height:auto;filter:grayscale(1) contrast(1.06)}
 .prize-list{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(202,161,17,.25);border:1px solid rgba(202,161,17,.25)}
 .prize-list li{background:var(--blue);padding:14px 16px;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,240,231,.9)}
 .prize-list li b{color:var(--gold);font-weight:500}
@@ -511,6 +512,11 @@ footer a:hover{color:var(--gold);opacity:1}
 :focus-visible{outline:2px solid var(--gold-lite);outline-offset:3px}
 
 /* ---------- responsive ---------- */
+@media(min-width:721px) and (max-width:1279px){
+  .nav-links{display:none}
+  .menu-toggle{display:inline-flex}
+  .menu-panel{top:calc(75px + var(--rbh,0px))}
+}
 @media(max-width:960px){
   .two-col,.course-grid,.trophy,.stairs-grid{grid-template-columns:1fr}
   .races,.fete{grid-template-columns:1fr}
@@ -585,9 +591,170 @@ footer a:hover{color:var(--gold);opacity:1}
 .contact-side .mailalt{margin-top:16px;font-size:.96rem}
 .contact-side .mailalt a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(202,161,17,.4);transition:.2s}
 .contact-side .mailalt a:hover{color:var(--gold-lite);border-color:var(--gold-lite)}
+/* ---------- bandeau « Info coureurs » (refermable) ---------- */
+:root{--rbh:0px}
+html.has-rb{--rbh:38px}
+.rb-bar{position:fixed;inset:0 0 auto 0;z-index:70;height:var(--rbh);display:flex;align-items:center;justify-content:center;
+  padding:0 52px 0 var(--gut);background:var(--blue);border-bottom:1px solid rgba(202,161,17,.45)}
+.rb-bar a{display:flex;align-items:center;gap:10px;min-width:0;overflow:hidden;white-space:nowrap;text-decoration:none;color:var(--salt);
+  font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase}
+.rb-dot{flex:none;width:7px;height:7px;border-radius:50%;background:var(--ember-lite);box-shadow:0 0 0 3px rgba(240,129,60,.25)}
+.rb-k{color:var(--gold-lite)}
+.rb-msg{overflow:hidden;text-overflow:ellipsis}
+.rb-go{color:var(--gold);border-bottom:1px solid rgba(202,161,17,.6);transition:color .2s,border-color .2s}
+.rb-bar a:hover .rb-go,.rb-bar a:focus-visible .rb-go{color:var(--gold-lite);border-color:var(--gold-lite)}
+.rb-close{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:34px;height:34px;
+  background:none;border:0;padding:0;cursor:pointer;color:rgba(243,240,231,.7);transition:color .2s}
+.rb-close:hover,.rb-close:focus-visible{color:var(--gold-lite)}
+.rb-close svg{width:12px;height:12px}
+html.has-rb header{top:var(--rbh)}
+html.has-rb .hero-inner{padding-top:calc(clamp(104px,15vh,150px) + var(--rbh))}
+
+/* ---------- roadbook ---------- */
+.rbk-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,56px);align-items:end}
+.rbk-head .lead{margin:4px 0 0;max-width:52ch;opacity:.86}
+.rbk-dl{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.rbk-dl-meta{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.rbk-warn{margin:clamp(28px,4vw,44px) 0 0;padding:14px 18px;border-left:3px solid var(--ember-lite);background:rgba(240,129,60,.08);font-size:.95rem;line-height:1.55;color:rgba(243,240,231,.88)}
+.rbk-warn b{color:var(--salt)}
+.rbk-toc{position:sticky;top:calc(71px + var(--rbh));z-index:5;display:flex;gap:6px;overflow-x:auto;margin:clamp(30px,4vw,48px) 0 0;padding:10px 0;
+  background:var(--ink);border-bottom:1px solid rgba(202,161,17,.25);scrollbar-width:none}
+.rbk-toc::-webkit-scrollbar{display:none}
+.rbk-toc a{flex:none;display:flex;align-items:baseline;gap:8px;padding:8px 14px;border:1px solid rgba(202,161,17,.3);color:var(--salt);text-decoration:none;
+  font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;transition:background .25s,border-color .25s}
+.rbk-toc a b{font-family:'Bodoni Moda',serif;font-weight:600;font-size:.95rem;letter-spacing:0;color:var(--gold-lite)}
+.rbk-toc a:hover,.rbk-toc a:focus-visible{background:rgba(202,161,17,.12);border-color:var(--gold)}
+.rbk-ch{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1.4fr);gap:clamp(24px,5vw,72px);padding-top:clamp(44px,6vw,76px);scroll-margin-top:calc(118px + var(--rbh))}
+.rbk-ch + .rbk-ch{margin-top:clamp(44px,6vw,76px);border-top:1px solid rgba(202,161,17,.22)}
+.rbk-ch-head{position:sticky;top:calc(140px + var(--rbh));align-self:start}
+.rbk-num{display:block;font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(3.2rem,7vw,5.4rem);line-height:.85;color:var(--gold)}
+.rbk-ch-head h3{margin:14px 0 8px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 118;font-weight:800;font-size:clamp(1.35rem,2.1vw,1.95rem);overflow-wrap:break-word;line-height:1;letter-spacing:-.005em;text-transform:uppercase}
+.rbk-ch-head p{margin:0;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,240,231,.6)}
+.rbk-ch-body{min-width:0}
+.rbk-text{margin:0;max-width:62ch;font-size:1rem;line-height:1.6;color:rgba(243,240,231,.86)}
+.rbk-text + *,.rbk-figs + .rbk-text{margin-top:18px}
+.rbk-sub{margin:clamp(32px,4vw,44px) 0 0;font-family:'DM Mono',monospace;font-weight:500;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.rbk-note,.rbk-cap{margin:12px 0 0;font-size:.84rem;line-height:1.5;color:rgba(243,240,231,.66)}
+.rbk-prog{list-style:none;margin:0;padding:0;border-top:1px solid rgba(202,161,17,.25)}
+.rbk-prog li{display:grid;grid-template-columns:78px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid rgba(202,161,17,.16)}
+.rbk-prog .t{font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.3rem;line-height:1.1;color:var(--gold-lite)}
+.rbk-prog .w{font-size:.92rem;line-height:1.45;color:rgba(243,240,231,.76)}
+.rbk-prog .w b,.rbk-retraits .w b{display:block;margin-bottom:3px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 112;font-weight:700;font-size:1rem;letter-spacing:.02em;text-transform:uppercase;color:var(--salt)}
+.rbk-prog li.key{margin-left:-14px;padding-left:12px;border-left:2px solid var(--gold);background:linear-gradient(90deg,rgba(202,161,17,.13),transparent 70%)}
+.rbk-retraits{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
+.rbk-retraits li{display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;padding:14px 16px;border:1px solid rgba(202,161,17,.25);background:rgba(243,240,231,.03)}
+.rbk-retraits .d{font-family:'DM Mono',monospace;font-size:.64rem;line-height:1.5;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,240,231,.7)}
+.rbk-retraits .d b{display:block;font-family:'Archivo',sans-serif;font-size:.98rem;font-weight:700;letter-spacing:.02em;color:var(--gold-lite)}
+.rbk-retraits .w{font-size:.9rem;line-height:1.45;color:rgba(243,240,231,.78)}
+.rbk-retraits .w b{text-transform:none;letter-spacing:0}
+.rbk-perk{display:table;margin-top:8px;padding:3px 8px;font-style:normal;font-family:'DM Mono',monospace;font-size:.58rem;line-height:1.45;letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(202,161,17,.6);color:var(--gold-lite)}
+.rbk-parks{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid rgba(202,161,17,.25)}
+.rbk-parks li{position:relative;display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:14px;align-items:center;padding:11px 0 13px;border-bottom:1px solid rgba(202,161,17,.14);font-size:.94rem}
+.rbk-parks li::after{content:"";position:absolute;left:48px;bottom:-1px;height:2px;width:calc((100% - 48px) * var(--d));background:linear-gradient(90deg,var(--gold),rgba(202,161,17,.2))}
+.rbk-parks b{display:flex;align-items:center;justify-content:center;width:34px;height:30px;background:var(--blue-lift);color:var(--salt);font-family:'Archivo',sans-serif;font-weight:800;font-size:.82rem}
+.rbk-parks em{font-style:normal;font-family:'DM Mono',monospace;font-size:.76rem;white-space:nowrap;color:var(--gold-lite)}
+.rbk-come{margin:22px 0 0;border-top:1px solid rgba(202,161,17,.25)}
+.rbk-come div{display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;padding:13px 0;border-bottom:1px solid rgba(202,161,17,.14)}
+.rbk-come dt{padding-top:3px;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.rbk-come dd{margin:0;font-size:.93rem;line-height:1.5;color:rgba(243,240,231,.86)}
+.rbk-figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid rgba(202,161,17,.3)}
+.rbk-figs div{padding:16px 16px 14px;border-left:1px solid rgba(202,161,17,.22)}
+.rbk-figs div:first-child{border-left:0}
+.rbk-figs b{display:block;font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1;color:var(--gold-lite)}
+.rbk-figs span{display:block;margin-top:8px;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;opacity:.7}
+.rbk-sectors{list-style:none;margin:26px 0 0;padding:0}
+.rbk-sectors > li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;padding:20px 0 12px;border-top:1px solid rgba(202,161,17,.2)}
+.rbk-sectors .sn{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--gold);font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.35rem;color:var(--gold-lite)}
+.rbk-sectors h4{margin:4px 0 10px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 112;font-weight:800;font-size:1.12rem;letter-spacing:.01em;text-transform:uppercase}
+.rbk-sectors p{margin:0 0 10px;font-size:.94rem;line-height:1.55;color:rgba(243,240,231,.82)}
+.rbk-sectors .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.rbk-sectors .tags span,.rbk-rose .jersey{display:inline-flex;align-items:center;gap:7px;padding:4px 8px;border:1px solid rgba(243,240,231,.24);font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,240,231,.86)}
+.rbk-sectors .tags .jersey,.rbk-rose .jersey{border-color:var(--mc);color:var(--salt)}
+.jersey::before{content:"";flex:none;width:12px;height:12px;background:var(--mc);clip-path:polygon(28% 0,72% 0,100% 18%,86% 42%,78% 36%,78% 100%,22% 100%,22% 36%,14% 42%,0 18%)}
+.rbk-sectors .tip{padding:10px 14px;border-left:2px solid var(--gold);background:rgba(202,161,17,.07);font-size:.9rem}
+.rbk-sectors .tip b{display:block;margin-bottom:4px;font-family:'DM Mono',monospace;font-weight:500;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.rbk-rose{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0;padding:16px 0 0;border-top:1px solid rgba(202,161,17,.2);font-size:.94rem;color:rgba(243,240,231,.84)}
+.rbk-loops{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.rbk-loops li{padding:14px 14px 12px;border-top:4px solid var(--lc);background:rgba(243,240,231,.04)}
+.rbk-loops b{display:block;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 112;font-weight:800;font-size:1rem;text-transform:uppercase}
+.rbk-loops span{display:block;margin:4px 0 8px;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lc)}
+.rbk-loops p{margin:0;font-size:.86rem;line-height:1.45;color:rgba(243,240,231,.8)}
+.rbk-map{margin:18px 0 0}
+.rbk-map a{display:block;overflow:hidden;border:1px solid rgba(202,161,17,.35);background:#f3f4f5}
+.rbk-map img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.rbk-map a:hover img{transform:scale(1.015)}
+.rbk-map figcaption{margin-top:10px;font-size:.84rem;line-height:1.5;color:rgba(243,240,231,.66)}
+.rbk-zoom{display:none}
+.rbk-lamp{padding:18px 20px;border:1px solid var(--ember-lite);background:rgba(240,129,60,.08)}
+.rbk-lamp b{display:flex;align-items:center;gap:10px;font-family:'Archivo',sans-serif;font-variation-settings:'wdth' 112;font-weight:800;font-size:1.05rem;text-transform:uppercase;color:var(--ember-lite)}
+.rbk-lamp b::before{content:"!";flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--ember-lite);color:var(--ink);font-size:.82rem}
+.rbk-lamp p{margin:8px 0 0;font-size:.94rem;line-height:1.55;color:rgba(243,240,231,.86)}
+.rbk-kit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+.rbk-kit > div{padding:16px 18px;border:1px solid rgba(202,161,17,.25)}
+.rbk-kit h4{margin:0 0 8px;font-family:'DM Mono',monospace;font-weight:500;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.rbk-kit ul{list-style:none;margin:0;padding:0}
+.rbk-kit li{position:relative;padding:7px 0 7px 18px;font-size:.92rem;border-top:1px solid rgba(243,240,231,.07)}
+.rbk-kit li:first-child{border-top:0}
+.rbk-kit li::before{content:"";position:absolute;left:0;top:1.05em;width:8px;height:2px;background:var(--gold)}
+.rbk-rules{list-style:none;margin:22px 0 0;padding:0}
+.rbk-rules li{padding:12px 0;border-top:1px solid rgba(202,161,17,.18);font-size:.93rem;line-height:1.55;color:rgba(243,240,231,.82)}
+.rbk-rules li:last-child{border-bottom:1px solid rgba(202,161,17,.18)}
+.rbk-rules b{color:var(--salt)}
+.rbk-rules + .rbk-text{margin-top:18px}
+.rbk-sos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+.rbk-sos a{display:flex;flex-direction:column;gap:6px;padding:16px 18px;border:1px solid var(--gold);background:rgba(202,161,17,.06);color:var(--salt);text-decoration:none;transition:background .25s,transform .25s}
+.rbk-sos a:hover,.rbk-sos a:focus-visible{background:rgba(202,161,17,.16);transform:translateY(-2px)}
+.rbk-sos span{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.rbk-sos b{font-family:'Bodoni Moda',serif;font-weight:600;font-size:clamp(1.5rem,3vw,2rem);line-height:1;white-space:nowrap}
+@media(pointer:coarse){.rbk-zoom{display:inline;color:var(--gold)}}
+@media(prefers-reduced-motion:reduce){
+  .rbk-map img,.rbk-sos a{transition:none}
+  .rbk-map a:hover img,.rbk-sos a:hover,.rbk-sos a:focus-visible{transform:none}
+}
+@media(max-width:960px){
+  .rbk-head{grid-template-columns:1fr;align-items:start}
+  .rbk-ch{grid-template-columns:1fr;gap:18px}
+  .rbk-ch-head{position:static;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:16px;align-items:end}
+  .rbk-ch-head .rbk-num{grid-row:1 / span 2;font-size:3.4rem}
+  .rbk-ch-head h3{margin:0 0 6px}
+  .rbk-loops{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  html.has-rb{--rbh:40px}
+  .rb-bar{justify-content:flex-start;padding-right:46px}
+  .rb-bar a{gap:8px;font-size:.6rem;letter-spacing:.08em}
+  .rb-go{display:none}
+  .rbk-toc{top:calc(59px + var(--rbh));margin-left:calc(var(--gut) * -1);margin-right:calc(var(--gut) * -1);padding-left:var(--gut);padding-right:var(--gut)}
+  .rbk-kit{grid-template-columns:1fr}
+  .rbk-retraits li,.rbk-come div{grid-template-columns:1fr;gap:6px}
+  .rbk-prog li{grid-template-columns:64px minmax(0,1fr);gap:12px}
+  .rbk-prog .t{font-size:1.15rem}
+  .rbk-sectors > li{grid-template-columns:36px minmax(0,1fr);gap:14px}
+  .rbk-sectors .sn{width:36px;height:36px;font-size:1.15rem}
+}
 </style>
 </head>
 <body>
+<div class="rb-bar" id="rbBar" role="region" aria-label="Information coureurs" hidden>
+  <a href="#roadbook"><span class="rb-dot" aria-hidden="true"></span><span class="rb-k">Info coureurs</span><span class="rb-msg">Le roadbook est disponible</span><span class="rb-go">Consulter →</span></a>
+  <button class="rb-close" type="button" aria-label="Masquer cette information"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 1l10 10M11 1L1 11" stroke="currentColor" stroke-width="1.6"/></svg></button>
+</div>
+<script>
+/* bandeau « Info coureurs » : refermable, choix mémorisé dans le navigateur, retiré après la course */
+(function(){
+  var bar = document.getElementById('rbBar'), KEY = 'csb-roadbook-bandeau-masque', closed = false;
+  try { closed = window.localStorage.getItem(KEY) === '1'; } catch(e) {}
+  if(closed || new Date() >= new Date('2026-11-08T00:00:00+01:00')) return;
+  bar.hidden = false;
+  document.documentElement.classList.add('has-rb');
+  bar.querySelector('.rb-close').addEventListener('click', function(){
+    bar.hidden = true;
+    document.documentElement.classList.remove('has-rb');
+    try { window.localStorage.setItem(KEY, '1'); } catch(e) {}
+  });
+})();
+</script>
+
 
 <header id="hdr">
   <a class="brand" href="#top"><img src="images/logo-velcap-nav.png" alt="CSB by Velcap"></a>
@@ -599,6 +766,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <a href="#epreuves">Les courses</a>
       <a href="#programme">Le programme</a>
       <a href="#medaille">Médaille</a>
+      <a href="#roadbook">Roadbook</a>
       <a href="#infos">Infos</a>
       <a href="#sejour">Séjour</a>
     </div>
@@ -615,6 +783,7 @@ footer a:hover{color:var(--gold);opacity:1}
   <a href="#epreuves">Les trois départs</a>
   <a href="#programme">Le programme</a>
   <a href="#medaille">Médaille</a>
+  <a href="#roadbook">Roadbook coureurs</a>
   <a href="#infos">Infos pratiques</a>
   <a href="#sejour">Venir &amp; séjourner</a>
   <a href="#inscription">S'inscrire</a>
@@ -654,7 +823,7 @@ footer a:hover{color:var(--gold);opacity:1}
   <div class="facts">
     <div class="facts-grid">
       <div class="fact"><b>8,6 km</b><span>Trois boucles</span></div>
-      <div class="fact"><b>220 m</b><span>Dénivelé positif</span></div>
+      <div class="fact"><b>230 m</b><span>Dénivelé positif</span></div>
       <div class="fact"><b>19h45</b><span>Départ, allée Marcou</span></div>
       <div class="fact"><b>500</b><span>Dossards adultes</span></div>
     </div>
@@ -779,10 +948,10 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="rv">
         <div class="stats">
           <div class="stat"><b>8,6 km</b><span>Distance officielle</span></div>
-          <div class="stat"><b>220 m</b><span>Dénivelé positif</span></div>
+          <div class="stat"><b>230 m</b><span>Dénivelé positif</span></div>
           <div class="stat"><b>3</b><span>Boucles</span></div>
         </div>
-        <p>Départ <b>allée Marcou</b>, arrivée <b>place de la Mairie</b>. La Corrida Nocturne se court en <b>trois boucles</b> de centre-ville, avec <b>deux passages</b> sous la Grande Saline et <b>deux montées</b> dans les escaliers d'Arçon. Un point de ravitaillement est installé sur le parcours, à l'endroit où le tracé change de direction, et repassé à chaque tour. Trois boucles, c'est un choix&#8239;: le public voit passer les coureurs plusieurs fois plutôt qu'une.</p>
+        <p>Départ <b>allée Marcou</b>, arrivée <b>place de la Mairie</b>. La Corrida Nocturne se court en <b>trois boucles</b> de centre-ville, avec <b>deux passages</b> sous la Grande Saline et <b>deux montées</b> dans les escaliers d'Arçon. Un point de ravitaillement est installé sur le parcours, à l'endroit où le tracé change de direction, avec deux passages dans la soirée. Trois boucles, c'est un choix&#8239;: le public voit passer les coureurs plusieurs fois plutôt qu'une.</p>
         <p>La Mini-Corrida emprunte le même circuit sur deux boucles.</p>
 
         <div class="measured">
@@ -793,7 +962,7 @@ footer a:hover{color:var(--gold);opacity:1}
             <div><dt>Altitude min.</dt><dd id="gMin"></dd></div>
             <div><dt>Altitude max.</dt><dd id="gMax"></dd></div>
           </dl>
-          <p class="measured-note">Les chiffres officiels du règlement (8,6 km et 220 m D+) font foi. Ces valeurs sont calculées à partir de la trace GPS enregistrée sur le parcours&#8239;: elles peuvent en différer légèrement.</p>
+          <p class="measured-note">Les chiffres officiels (8,6 km et 230 m D+) font foi. Ces valeurs sont calculées à partir de la trace GPS enregistrée sur le parcours&#8239;: elles peuvent en différer légèrement.</p>
         </div>
 
         <ul class="sector-list">
@@ -832,7 +1001,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="race headline rv">
         <p class="time">19h45 · 8,6 km · 20 €</p>
         <h3 class="display">Corrida Nocturne</h3>
-        <p>Trois boucles, 220 m D+, deux traversées de la Grande Saline — monument UNESCO — et deux montées d'Arçon. Frontale obligatoire.</p>
+        <p>Trois boucles, 230 m D+, deux traversées de la Grande Saline, monument UNESCO, et deux montées d'Arçon. Frontale obligatoire.</p>
         <p class="who">U18 et plus · 16 ans et plus</p>
       </div>
     </div>
@@ -863,9 +1032,9 @@ footer a:hover{color:var(--gold);opacity:1}
       <details open>
         <summary>Corrida Nocturne <span class="tag">U18 et plus</span></summary>
         <div class="body">
-          <p>L'épreuve reine. Présentation des favoris sur la ligne, départ allée Marcou à 19h45, arrivée place de la Mairie. Trois boucles de centre-ville, avec deux traversées des sous-sols de la Grande Saline, deux montées dans les escaliers d'Arçon et un ravitaillement repassé à chaque tour.</p>
+          <p>L'épreuve reine. Présentation des favoris sur la ligne, départ allée Marcou à 19h45, arrivée place de la Mairie. Trois boucles de centre-ville, avec deux traversées des sous-sols de la Grande Saline, deux montées dans les escaliers d'Arçon et deux passages au ravitaillement.</p>
           <p>La jauge est fixée à 500 participants adultes pour cette première édition&#8239;: les inscriptions sont ouvertes jusqu'au vendredi 6 novembre, et ferment plus tôt si la limite est atteinte.</p>
-          <div class="spec"><div><span class="k">Départ</span><span class="v">19h45 · allée Marcou</span></div><div><span class="k">Distance</span><span class="v">8,6 km</span></div><div><span class="k">Dénivelé</span><span class="v">220 m D+</span></div><div><span class="k">Parcours</span><span class="v">3 boucles</span></div><div><span class="k">Catégories</span><span class="v">U18 et plus · 16 ans et +</span></div><div><span class="k">Jauge</span><span class="v">500 dossards</span></div><div><span class="k">Tarif</span><span class="v">20 €</span></div><div><span class="k">Frontale</span><span class="v">Obligatoire</span></div></div>
+          <div class="spec"><div><span class="k">Départ</span><span class="v">19h45 · allée Marcou</span></div><div><span class="k">Distance</span><span class="v">8,6 km</span></div><div><span class="k">Dénivelé</span><span class="v">230 m D+</span></div><div><span class="k">Parcours</span><span class="v">3 boucles</span></div><div><span class="k">Catégories</span><span class="v">U18 et plus · 16 ans et +</span></div><div><span class="k">Jauge</span><span class="v">500 dossards</span></div><div><span class="k">Tarif</span><span class="v">20 €</span></div><div><span class="k">Frontale</span><span class="v">Obligatoire</span></div></div>
         </div>
       </details>
     </div>
@@ -895,7 +1064,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="tl-row rv"><span class="tl-time">19h30</span><span class="tl-title">Présentation des favoris</span><span class="tl-desc">Palmarès au micro sur la ligne de départ, allée Marcou.</span></div>
       <div class="tl-row key rv"><span class="tl-time">19h45</span><span class="tl-title">Départ de la Corrida Nocturne</span><span class="tl-desc">U18 et plus. Trois boucles, deux passages sous la Grande Saline, deux montées d'Arçon.</span></div>
       <div class="tl-row rv"><span class="tl-time">21h30</span><span class="tl-title">Remise des récompenses</span><span class="tl-desc">Place de la Mairie. Scratch hommes et femmes, catégories U14 à U20.</span></div>
-      <div class="tl-row rv"><span class="tl-time">22h00</span><span class="tl-title">Repas et soirée</span><span class="tl-desc">Repas en option, 9 € à réserver à l'inscription jusqu'au mercredi 4 novembre. Puis bal ouvert aux coureurs, bénévoles et habitants.</span></div>
+      <div class="tl-row rv"><span class="tl-time">21h30</span><span class="tl-title">Repas et soirée</span><span class="tl-desc">Repas en option, 9 € à réserver à l'inscription jusqu'au mercredi 4 novembre. Puis bal ouvert aux coureurs, bénévoles et habitants.</span></div>
     </div>
   </div>
 </section>
@@ -903,7 +1072,7 @@ footer a:hover{color:var(--gold);opacity:1}
 <!-- ============ TROPHÉES ============ -->
 <section class="pad deep">
   <div class="wrap trophy">
-    <div class="trophy-img rv"><img src="images/pave-de-salins-trophee.jpg" alt="Le Pavé de Salins, trophée en pierre sur socle métallique gravé" loading="lazy"></div>
+    <div class="trophy-img rv"><img src="images/pave-de-salins-trophee.jpg" alt="Le Pavé de Salins, trophée en pierre sur socle métallique gravé" width="1000" height="1500" loading="lazy"></div>
     <div class="rv">
       <p class="eyebrow">Les récompenses</p>
       <h2 class="display">Le Pavé<br>de Salins</h2>
@@ -961,6 +1130,218 @@ footer a:hover{color:var(--gold);opacity:1}
   </div>
 </section>
 
+<!-- ============ ROADBOOK ============ -->
+<section class="pad deep roadbook" id="roadbook">
+  <div class="wrap">
+    <div class="rbk-head rv">
+      <div>
+        <p class="eyebrow">Info coureurs</p>
+        <h2 class="display">Le roadbook</h2>
+        <p class="lead">Horaires, accès, parcours et sécurité&#8239;: l'essentiel du roadbook officiel, à garder sous la main le samedi 7 novembre.</p>
+      </div>
+      <div class="rbk-dl">
+        <a class="btn" href="roadbook-corrida-salins-2026.pdf" download="roadbook-corrida-salins-2026.pdf">Télécharger le roadbook <span class="arw">↓</span></a>
+        <span class="rbk-dl-meta">PDF · 14 pages · 2,1 Mo</span>
+      </div>
+    </div>
+
+    <p class="rbk-warn rv"><b>Seul le balisage mis en place le jour de la course fait foi.</b> Le roadbook est fourni à titre indicatif. Distance et dénivelé officiels&#8239;: 8,6 km et 230 m D+.</p>
+
+    <nav class="rbk-toc" aria-label="Sommaire du roadbook">
+      <a href="#rb-horaires"><b>01</b>Horaires</a>
+      <a href="#rb-acces"><b>02</b>Accès</a>
+      <a href="#rb-parcours"><b>03</b>Parcours</a>
+      <a href="#rb-securite"><b>04</b>Sécurité</a>
+      <a href="#rb-village"><b>05</b>Village</a>
+    </nav>
+
+    <!-- 01 HORAIRES -->
+    <article class="rbk-ch" id="rb-horaires" aria-labelledby="rb-horaires-t">
+      <div class="rbk-ch-head rv">
+        <span class="rbk-num" aria-hidden="true">01</span>
+        <h3 id="rb-horaires-t">Horaires</h3>
+        <p>Samedi 7 novembre 2026</p>
+      </div>
+      <div class="rbk-ch-body">
+        <ol class="rbk-prog rv">
+          <li><span class="t">18h00</span><span class="w"><b>Retrait des dossards</b>Jour J, dans le hall de la mairie de Salins-les-Bains.</span></li>
+          <li><span class="t">18h00</span><span class="w"><b>Buvette et restauration</b>Écocups consignées. Le site s'anime avant le premier départ.</span></li>
+          <li><span class="t">18h45</span><span class="w"><b>Départ Mini-Corrida</b>U14 et U16. Deux boucles du circuit, chronométrées.</span></li>
+          <li><span class="t">19h30</span><span class="w"><b>Présentation des favoris</b>Sur la ligne de départ, allée Marcou.</span></li>
+          <li class="key"><span class="t">19h45</span><span class="w"><b>Départ Corrida Nocturne</b>U18 et plus. Trois boucles, souterrains, escaliers d'Arçon.</span></li>
+          <li><span class="t">21h30</span><span class="w"><b>Remise des récompenses et repas</b>Place de la Mairie. Repas en option (9&nbsp;€).</span></li>
+        </ol>
+
+        <h4 class="rbk-sub rv">Retrait des dossards</h4>
+        <ul class="rbk-retraits rv">
+          <li><span class="d"><b>Mer. 4 nov.</b>14h à 19h</span><span class="w"><b>Décathlon Besançon</b>Rue André Breton, 25000 Besançon. Billets de tombola disponibles sur place.<i class="rbk-perk">-10&nbsp;% sur tous vos achats au rayon running et nutrition</i></span></li>
+          <li><span class="d"><b>Ven. 6 nov.</b>17h à 19h</span><span class="w"><b>Décathlon Besançon et Salins-les-Bains</b>Dans les deux lieux. À Salins-les-Bains, dans le hall de la mairie.<i class="rbk-perk">-10&nbsp;% sur tous vos achats au rayon running et nutrition à Décathlon Besançon</i></span></li>
+          <li><span class="d"><b>Sam. 7 nov.</b>À partir de 18h</span><span class="w"><b>Hall de la mairie, Salins-les-Bains</b>Jour J, sur place.</span></li>
+        </ul>
+        <p class="rbk-note rv">Retrait sur présentation d'une pièce d'identité et d'un justificatif (licence ou PPS). Pour les épreuves jeunes, une autorisation parentale signée est demandée.</p>
+      </div>
+    </article>
+
+    <!-- 02 ACCÈS -->
+    <article class="rbk-ch" id="rb-acces" aria-labelledby="rb-acces-t">
+      <div class="rbk-ch-head rv">
+        <span class="rbk-num" aria-hidden="true">02</span>
+        <h3 id="rb-acces-t">Accès et stationnement</h3>
+        <p>Centre-ville fermé le soir de la course</p>
+      </div>
+      <div class="rbk-ch-body">
+        <p class="rbk-text rv">Le centre-ville est fermé à la circulation le soir de la course. Les parkings sont fléchés en entrée de ville, à quelques minutes à pied du village. Le covoiturage est encouragé.</p>
+        <ul class="rbk-parks rv" aria-label="Parkings et distance jusqu'au départ">
+          <li style="--d:.06"><b>P1</b><span>Place des Salines</span><em>100 m</em></li>
+          <li style="--d:.17"><b>P2</b><span>Quai Valette</span><em>300 m</em></li>
+          <li style="--d:.33"><b>P3</b><span>Parking place Aubarède</span><em>600 m</em></li>
+          <li style="--d:.56"><b>P4</b><span>Parking Therma-Salina</span><em>1 km</em></li>
+          <li style="--d:.69"><b>P5</b><span>Bi1</span><em>1,25 km</em></li>
+          <li style="--d:.89"><b>P6</b><span>Parking Lidl</span><em>1,6 km</em></li>
+          <li style="--d:1"><b>P7</b><span>Parking Super U</span><em>1,8 km</em></li>
+        </ul>
+        <p class="rbk-cap rv">Distance de chaque parking jusqu'au départ, allée Marcou.</p>
+        <dl class="rbk-come rv">
+          <div><dt>Voiture</dt><dd>Par la N83. Besançon 45 min, Dole 50 min, Lons-le-Saunier 40 min, Lyon et Genève environ 2 h.</dd></div>
+          <div><dt>Train</dt><dd>Gare de Mouchard, à dix minutes de Salins, sur la ligne Paris–Lausanne.</dd></div>
+          <div><dt>Sur place</dt><dd>Tout le village de l'événement se fait à pied depuis les parkings.</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <!-- 03 PARCOURS -->
+    <article class="rbk-ch" id="rb-parcours" aria-labelledby="rb-parcours-t">
+      <div class="rbk-ch-head rv">
+        <span class="rbk-num" aria-hidden="true">03</span>
+        <h3 id="rb-parcours-t">Parcours</h3>
+        <p>Allée Marcou, place de la Mairie</p>
+      </div>
+      <div class="rbk-ch-body">
+        <div class="rbk-figs rv">
+          <div><b>8,6 km</b><span>Distance</span></div>
+          <div><b>230 m</b><span>Dénivelé positif</span></div>
+          <div><b>3</b><span>Boucles</span></div>
+        </div>
+        <p class="rbk-text rv">Départ allée Marcou, arrivée place de la Mairie. Trois boucles de centre-ville, qui enchaînent deux traversées des sous-sols de la Grande Saline, deux montées dans les escaliers d'Arçon et deux passages au ravitaillement.</p>
+
+        <ol class="rbk-sectors">
+          <li class="rv" style="--mc:#8B5CF6">
+            <span class="sn">1</span>
+            <div>
+              <h4>Le départ, allée Marcou</h4>
+              <p class="tags"><span class="jersey">Maillot violet</span><span>Sprint 450 m</span></p>
+              <p>C'est le secteur sprint de la Corrida. Une porte de chronométrage mesure votre temps sur ce segment&#8239;: le meilleur temps remporte le maillot violet, attribué en fin de course.</p>
+            </div>
+          </li>
+          <li class="rv">
+            <span class="sn">2</span>
+            <div>
+              <h4>Les sous-sols de la Grande Saline</h4>
+              <p class="tags"><span>2 passages</span><span>Public à la sortie des galeries</span></p>
+              <p>La galerie, creusée pour puiser la saumure, est mise en lumière pour l'occasion. Le sol est irrégulier et la hauteur sous voûte limitée par endroits&#8239;: l'allure y est volontairement contenue et le dépassement déconseillé. Des agents sont postés à l'entrée et à la sortie&#8239;: suivez leurs consignes en cas de problème.</p>
+            </div>
+          </li>
+          <li class="rv" style="--mc:#2F7FD8">
+            <span class="sn">3</span>
+            <div>
+              <h4>Les escaliers d'Arçon</h4>
+              <p class="tags"><span class="jersey">Maillot bleu</span><span>2 montées</span><span>Fan zone des deux côtés</span></p>
+              <p>Le point fort du circuit, mis en lumière, là où le public se rassemble. Des portes de chronométrage mesurent votre temps sur ce segment&#8239;: le meilleur temps remporte le maillot bleu.</p>
+              <p class="tip"><b>Conseil de l'organisation</b> Ne partez pas trop fort dans les premières marches. L'ambiance pousse à accélérer&#8239;: c'est précisément là qu'il faut garder la tête froide.</p>
+            </div>
+          </li>
+          <li class="rv" style="--mc:#2E9E5B">
+            <span class="sn">4</span>
+            <div>
+              <h4>La montée de Saint-Anatoile</h4>
+              <p class="tags"><span class="jersey">Maillot vert</span><span>1 seul essai</span><span>Panneau de début et de fin</span></p>
+              <p>Une porte de chronométrage mesure votre temps sur ce segment&#8239;: le meilleur temps remporte le maillot vert, attribué en fin de course.</p>
+            </div>
+          </li>
+          <li class="rv">
+            <span class="sn">5</span>
+            <div>
+              <h4>Le ravitaillement</h4>
+              <p class="tags"><span>2 passages</span></p>
+              <p>Un point unique sur le parcours, où vous passerez deux fois dans la soirée.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="rbk-rose rv" style="--mc:#E0569B"><span class="jersey">Maillot rose</span> Il récompense le meilleur temps sur l'ensemble du parcours.</p>
+
+        <h4 class="rbk-sub rv">Une couleur par boucle</h4>
+        <p class="rbk-text rv">Chaque boucle a sa propre couleur de flèches. Suivez uniquement la couleur de la boucle sur laquelle vous êtes.</p>
+        <ul class="rbk-loops rv">
+          <li style="--lc:#F4B400"><b>Boucle 1</b><span>Flèches jaunes</span><p>Arrivée directement en face de l'église Saint-Anatoile, puis montée par la rue des Claristes et le chemin des Coteaux.</p></li>
+          <li style="--lc:#1E9AC2"><b>Boucle 2</b><span>Flèches bleues</span><p>Arrivée par les escaliers d'Arçon, puis même tracé que la boucle jaune&#8239;: montée vers le haut.</p></li>
+          <li style="--lc:#E64DAE"><b>Boucle 3</b><span>Flèches roses</span><p>Arrivée par les escaliers d'Arçon, puis virage à l'équerre et redescente directe par la rue des Claristes, direction la ligne d'arrivée.</p></li>
+        </ul>
+        <figure class="rbk-map rv">
+          <a href="images/roadbook/carrefour-des-boucles.webp" target="_blank" rel="noopener" aria-label="Agrandir le schéma du carrefour des boucles (nouvel onglet)">
+            <img src="images/roadbook/carrefour-des-boucles.webp" width="1200" height="991" loading="lazy" decoding="async" alt="Schéma du carrefour des boucles au pied des escaliers d'Arçon, rue des Claristes : la boucle 1 jaune arrive face à l'église Saint-Anatoile puis monte par le chemin des Coteaux ; la boucle 2 bleue arrive par les escaliers d'Arçon puis monte ; la boucle 3 rose arrive par les escaliers puis redescend par la rue des Claristes vers l'arrivée.">
+          </a>
+          <figcaption>Au pied des escaliers d'Arçon, rue des Claristes, les trois boucles se croisent. Des panneaux différenciés indiquent la direction de chaque boucle. <span class="rbk-zoom">Toucher pour agrandir</span></figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <!-- 04 SÉCURITÉ -->
+    <article class="rbk-ch" id="rb-securite" aria-labelledby="rb-securite-t">
+      <div class="rbk-ch-head rv">
+        <span class="rbk-num" aria-hidden="true">04</span>
+        <h3 id="rb-securite-t">Sécurité</h3>
+        <p>Matériel, consignes, urgences</p>
+      </div>
+      <div class="rbk-ch-body">
+        <div class="rbk-lamp rv">
+          <b>Lampe frontale obligatoire</b>
+          <p>Pour tous les participants, sur les trois épreuves. Elle est contrôlée au départ. La mise en lumière des monuments et le balisage nocturne ne la remplacent pas.</p>
+        </div>
+        <div class="rbk-kit rv">
+          <div>
+            <h4>Obligatoire</h4>
+            <ul><li>Lampe frontale en état de marche</li><li>Dossard visible sur le devant</li><li>Pièce d'identité au retrait</li><li>Justificatif ou licence</li></ul>
+          </div>
+          <div>
+            <h4>Recommandé</h4>
+            <ul><li>Tenue claire ou réfléchissante</li><li>Veste coupe-vent pour l'après-course</li><li>Gobelet individuel</li><li>Chaussures de trail</li></ul>
+          </div>
+        </div>
+        <ul class="rbk-rules rv">
+          <li><b>Vous n'êtes pas prioritaire.</b> Respectez les consignes des signaleurs aux traversées. Même si la circulation est réglementée par arrêtés municipaux, chaque coureur reste soumis au Code de la route et reste attentif aux traversées et aux véhicules autorisés (secours, organisation).</li>
+          <li><b>Seule la signalisation mise en place le jour J est à prendre en compte.</b> Le roadbook et les reconnaissances ne remplacent pas le balisage du soir de la course.</li>
+          <li><b>Les passages délicats</b> seront signalés par un balisage spécifique. Ralentissez à leur approche.</li>
+          <li><b>Dans la Grande Saline</b>, restez strictement sur le cheminement balisé, ne touchez ni les parois, ni les installations, ni le matériel d'éclairage, et ne jetez rien, même biodégradable&#8239;: conservez vos déchets jusqu'au ravitaillement.</li>
+          <li><b>En ville aussi</b>, respectez le calme des riverains, le mobilier urbain et les propriétés privées.</li>
+        </ul>
+        <p class="rbk-text rv">Dispositif de secours assuré par Jussieu Secours Allo Ambulance Alpha sur l'ensemble de la manifestation. Le parcours est encadré par des signaleurs et des bénévoles, et fait l'objet d'un balisage nocturne dédié. Présence de la police municipale.</p>
+        <div class="rbk-sos rv">
+          <a href="tel:+33384379191"><span>Urgence course</span><b>03 84 37 91 91</b></a>
+          <a href="tel:112"><span>Appel d'urgence</span><b>112</b></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 VILLAGE -->
+    <article class="rbk-ch" id="rb-village" aria-labelledby="rb-village-t">
+      <div class="rbk-ch-head rv">
+        <span class="rbk-num" aria-hidden="true">05</span>
+        <h3 id="rb-village-t">Village et résultats</h3>
+        <p>Place de la Mairie</p>
+      </div>
+      <div class="rbk-ch-body">
+        <dl class="rbk-come rv">
+          <div><dt>Vestiaire</dt><dd>Un vitabri aménagé à proximité de la zone de départ et d'arrivée, avec consigne à la buvette.</dd></div>
+          <div><dt>Buvette</dt><dd>Pour les coureurs et le public, à l'arrivée, en écocups consignées.</dd></div>
+          <div><dt>Repas</dt><dd>En option à 9&nbsp;€, réservé à l'inscription.</dd></div>
+          <div><dt>Chrono</dt><dd>Par puce, assuré par Taktik Sport (Corrida et Mini-Corrida). Classement scratch et par catégories FFA du U14 au U23. Résultats affichés à l'arrivée et publiés en ligne.</dd></div>
+          <div><dt>Récompenses</dt><dd>Scratch&#8239;: les 3 premiers et les 3 premières. Les maillots violet, bleu, vert et rose sont attribués en fin de course. Remise des prix à 21h30, place de la Mairie. Les catégories seniors ne sont pas récompensées.</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+</section>
+
 <!-- ============ INFOS PRATIQUES ============ -->
 <section class="pad" id="infos">
   <div class="wrap">
@@ -975,10 +1356,10 @@ footer a:hover{color:var(--gold);opacity:1}
       <div class="rv"><span class="k">Inscriptions</span><h4><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener" style="color:inherit">En ligne, sur Njuko ↗</a></h4><p>Ouvertes jusqu'au vendredi 6 novembre. Corrida 20 €, Mini-Corrida 7 €, Jungle Run 4 €.</p></div>
       <div class="rv"><span class="k">Justificatif</span><h4>Licence FFA ou PPS</h4><p>Au choix&#8239;: une licence FFA (Athlé Compétition, Athlé Entreprise ou Athlé Running) en cours de validité, ou un Parcours Prévention Santé (PPS). Les licences délivrées par une fédération étrangère sont acceptées.</p></div>
       <div class="rv"><span class="k">Matériel</span><h4 class="todo">Lampe frontale obligatoire</h4><p>Elle est exigée pour tous les participants, sur les trois épreuves. Sans frontale, pas de départ. Une tenue claire ou réfléchissante est en plus recommandée.</p></div>
-      <div class="rv"><span class="k">Chrono</span><h4>Puce électronique</h4><p>Chronométrage Taktik Sport pour la Corrida et la Mini-Corrida. Classement scratch et par catégories FFA du U12 au U23, seuls les premiers de chaque catégorie étant récompensés. Résultats affichés à l'arrivée et publiés en ligne.</p></div>
-      <div class="rv"><span class="k">Ravitaillement</span><h4>Un point sur le parcours</h4><p>Installé là où le tracé change de direction et repassé à chaque boucle, tenu avec Decathlon. Buvette pour les coureurs et le public à l'arrivée.</p></div>
+      <div class="rv"><span class="k">Chrono</span><h4>Puce électronique</h4><p>Chronométrage Taktik Sport pour la Corrida et la Mini-Corrida. Classement scratch et par catégories FFA du U14 au U23, seuls les premiers de chaque catégorie étant récompensés. Résultats affichés à l'arrivée et publiés en ligne.</p></div>
+      <div class="rv"><span class="k">Ravitaillement</span><h4>Un point sur le parcours</h4><p>Installé là où le tracé change de direction, avec deux passages dans la soirée, tenu avec Decathlon. Buvette pour les coureurs et le public à l'arrivée.</p></div>
       <div class="rv"><span class="k">Services</span><h4>Vestiaire, sans douche</h4><p>Un vitabri fait office de vestiaire à proximité de la zone de départ et d'arrivée. Aucune douche sur le site.</p></div>
-      <div class="rv"><span class="k">Sécurité</span><h4>Croix-Rouge et médecin de course</h4><p>Dispositif de secours de la Croix-Rouge française, médecin de course présent sur toute la manifestation, signaleurs et balisage nocturne dédié. Circulation réglementée par arrêtés municipaux.</p></div>
+      <div class="rv"><span class="k">Sécurité</span><h4>Secours et signaleurs</h4><p>Dispositif de secours assuré par Jussieu Secours Allo Ambulance Alpha sur l'ensemble de la manifestation, signaleurs et balisage nocturne dédié. Circulation réglementée par arrêtés municipaux, avec présence de la police municipale.</p></div>
       <div class="rv"><span class="k">Assurance</span><h4>RC organisateur</h4><p>Velcap Team souscrit une responsabilité civile organisateur (article L321-1 du Code du sport). Les licenciés FFA sont couverts par leur licence&#8239;; les non-licenciés sont invités à vérifier leur propre garantie individuelle accident.</p></div>
       <div class="rv"><span class="k">Repas</span><h4>Option à 9 €</h4><p>Le repas d'après-course se réserve au moment de l'inscription, pour les coureurs comme pour les accompagnants. Réservation jusqu'au mercredi 4 novembre, places limitées.</p></div>
       <div class="rv"><span class="k">Patrimoine</span><h4>Profitez-en, respectez-le</h4><p>Le passage dans la Grande Saline est un moment magnifique. C'est aussi un monument classé&#8239;: profitez du site, mais respectez-le.</p></div>
@@ -995,11 +1376,11 @@ footer a:hover{color:var(--gold);opacity:1}
         <p class="rc-kicker">Info importante</p>
         <h3 class="rc-title" id="rcInfosTitle">Retrait des dossards</h3>
         <ol class="rc-slots">
-          <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Mer.</span><b>4</b><span>nov.</span></span><span class="rc-sr">Mercredi 4 novembre</span><span class="rc-body"><span class="rc-time">14h à 19h</span><span class="rc-place">Décathlon Besançon</span><span class="rc-addr">Rue André Breton, 25000 Besançon</span><span class="rc-note"><span class="rc-badge">Tombola</span>Billets de tombola disponibles sur place</span></span></li>
-          <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Ven.</span><b>6</b><span>nov.</span></span><span class="rc-sr">Vendredi 6 novembre</span><span class="rc-body"><span class="rc-time">17h à 19h</span><span class="rc-place">Décathlon Besançon et Salins-les-Bains</span><span class="rc-addr">Besançon&#8239;: rue André Breton. Salins-les-Bains&#8239;: hall de la mairie.</span></span></li>
+          <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Mer.</span><b>4</b><span>nov.</span></span><span class="rc-sr">Mercredi 4 novembre</span><span class="rc-body"><span class="rc-time">14h à 19h</span><span class="rc-place">Décathlon Besançon</span><span class="rc-addr">Rue André Breton, 25000 Besançon</span><span class="rc-note"><span class="rc-badge">Tombola</span>Billets de tombola disponibles sur place</span><span class="rc-addr">-10&nbsp;% sur tous vos achats au rayon running et nutrition.</span></span></li>
+          <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Ven.</span><b>6</b><span>nov.</span></span><span class="rc-sr">Vendredi 6 novembre</span><span class="rc-body"><span class="rc-time">17h à 19h</span><span class="rc-place">Décathlon Besançon et Salins-les-Bains</span><span class="rc-addr">Besançon&#8239;: rue André Breton. Salins-les-Bains&#8239;: hall de la mairie.</span><span class="rc-addr">-10&nbsp;% sur tous vos achats au rayon running et nutrition à Décathlon Besançon.</span></span></li>
           <li class="rc-slot"><span class="rc-date" aria-hidden="true"><span>Sam.</span><b>7</b><span>nov.</span></span><span class="rc-sr">Samedi 7 novembre</span><span class="rc-body"><span class="rc-time">À partir de 18h <span class="rc-badge jj">Jour de course</span></span><span class="rc-place">Hall de la mairie, Salins-les-Bains</span><span class="rc-addr">Le jour de la course, sur place.</span></span></li>
         </ol>
-        <p class="rc-foot">Pièce d'identité et justificatif (licence FFA ou PPS) obligatoires.</p>
+        <p class="rc-foot">Pièce d'identité et justificatif (licence FFA ou PPS) obligatoires. Pour les épreuves jeunes, une autorisation parentale signée est demandée.</p>
       </section>
     </div>
 
@@ -1015,7 +1396,7 @@ footer a:hover{color:var(--gold);opacity:1}
         <summary>Qui peut participer&#8239;? <span class="tag">Article 5</span></summary>
         <div class="body">
           <p>La Corrida Nocturne est réservée aux catégories U18 et plus, soit 16 ans et plus. La Mini-Corrida s'adresse aux U14 et U16, le Jungle Run aux U12 et moins.</p>
-          <p>Au retrait du dossard, chaque participant présente une pièce d'identité et l'un des justificatifs prévus&#8239;: une <b>licence FFA</b> (Athlé Compétition, Athlé Entreprise ou Athlé Running) en cours de validité, ou un <b>PPS</b>. Les licences délivrées par une fédération étrangère sont acceptées.</p>
+          <p>Au retrait du dossard, chaque participant présente une pièce d'identité et l'un des justificatifs prévus&#8239;: une <b>licence FFA</b> (Athlé Compétition, Athlé Entreprise ou Athlé Running) en cours de validité, ou un <b>PPS</b>. Les licences délivrées par une fédération étrangère sont acceptées. Pour les épreuves jeunes, une autorisation parentale signée est demandée.</p>
         </div>
       </details>
       <details>
@@ -1028,7 +1409,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <details>
         <summary>À quoi ressemble le parcours&#8239;? <span class="tag">Article 4</span></summary>
         <div class="body">
-          <p>8,6 km et 220 m de dénivelé positif, en trois boucles de centre-ville. Sur l'ensemble du parcours, vous traversez <b>deux fois</b> les sous-sols de la Grande Saline et vous montez <b>deux fois</b> les escaliers d'Arçon&#8239;; le ravitaillement, installé là où le parcours change de direction, est repassé à chaque boucle. La Mini-Corrida en parcourt deux. Le Jungle Run, lui, fait 1,5 km avec obstacles.</p>
+          <p>8,6 km et 230 m de dénivelé positif, en trois boucles de centre-ville. Sur l'ensemble du parcours, vous traversez <b>deux fois</b> les sous-sols de la Grande Saline et vous montez <b>deux fois</b> les escaliers d'Arçon&#8239;; le ravitaillement, installé là où le parcours change de direction, voit passer chaque coureur deux fois. La Mini-Corrida en parcourt deux. Le Jungle Run, lui, fait 1,5 km avec obstacles.</p>
         </div>
       </details>
       <details>
@@ -1105,7 +1486,7 @@ footer a:hover{color:var(--gold);opacity:1}
         <h4>Venir</h4>
         <ul>
           <li><b>Voiture</b>Par la N83. Besançon 45 min, Dole 50 min, Lons-le-Saunier 40 min, Lyon et Genève environ 2h.</li>
-          <li><b>Train</b>Gare de Mouchard, à un quart d'heure de Salins, sur la ligne Paris–Lausanne.</li>
+          <li><b>Train</b>Gare de Mouchard, à dix minutes de Salins, sur la ligne Paris–Lausanne.</li>
           <li><b>Sur place</b>Tout le village de l'événement se fait à pied. Parkings fléchés en entrée de ville.</li>
         </ul>
       </div>
@@ -1153,7 +1534,7 @@ footer a:hover{color:var(--gold);opacity:1}
       <p class="sp-kicker">Avec le soutien de</p>
       <ul>
         <li><b>La Grande Saline</b><span>UNESCO</span></li>
-        <li><b>Croix-Rouge française</b><span>Secours</span></li>
+        <li><b>Jussieu Secours Allo Ambulance Alpha</b><span>Secours</span></li>
         <li><b>Taktik Sport</b><span>Chronométrage</span></li>
         <li><a href="https://in.njuko.com/taktiksport-corridanocturnesalins2026" target="_blank" rel="noopener noreferrer" aria-label="Visiter le site de Njuko (nouvel onglet)"><b>Njuko ↗</b><span>Inscriptions</span></a></li>
       </ul>
@@ -1249,6 +1630,7 @@ footer a:hover{color:var(--gold);opacity:1}
           <li><a href="#epreuves">Les trois départs</a></li>
           <li><a href="#programme">Le programme</a></li>
           <li><a href="#medaille">Médaille</a></li>
+          <li><a href="#roadbook">Roadbook coureurs</a></li>
           <li><a href="#infos">Infos pratiques &amp; règlement</a></li>
           <li><a href="#sejour">Venir &amp; séjourner</a></li>
         </ul>
